@@ -1,12 +1,27 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.0
+import Nemo.Configuration 1.0
 import "pages"
 
 ApplicationWindow {
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
+
+    ConfigurationGroup {
+            id: appConfiguration
+            path: "/apps/harbour-utilities01"
+
+            function removeValue(value, root) { shared.removeConfigurationValue(root ? appConfiguration : appSettings, value) }
+
+            ConfigurationGroup {
+                id: appSettings
+                path: "settings"
+
+
+            }
+        }
 
     Python {
         id: py
