@@ -10,18 +10,25 @@ ApplicationWindow {
     allowedOrientations: defaultAllowedOrientations
 
     ConfigurationGroup {
-            id: appConfiguration
-            path: "/apps/harbour-utilities01"
+        id: config
+        path: "/apps/harbour-utilities01"
 
-            function removeValue(value, root) { shared.removeConfigurationValue(root ? appConfiguration : appSettings, value) }
-
-            ConfigurationGroup {
-                id: appSettings
-                path: "settings"
-
-
-            }
+        function removeValue(key) {
+            if (value(key, null) !== null)
+                setValue(key, undefined)
         }
+
+        property bool welcomeTourCompleted
+
+        // Settings
+
+    }
+
+    QtObject {
+        id: shared
+
+
+    }
 
     Python {
         id: py

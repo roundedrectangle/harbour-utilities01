@@ -18,6 +18,8 @@ DISTFILES += qml/harbour-utilities01.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/SettingsPage.qml \
+    qml/pages/WelcomePage.qml \
     rpm/harbour-utilities01.changes.in \
     rpm/harbour-utilities01.changes.run.in \
     rpm/harbour-utilities01.spec \

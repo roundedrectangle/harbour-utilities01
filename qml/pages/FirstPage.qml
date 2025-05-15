@@ -3,9 +3,11 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
+
+    Component.onCompleted: {
+        if (!config.welcomeTourCompleted) pageStack.push(Qt.resolvedUrl("WelcomePage.qml"))
+    }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
