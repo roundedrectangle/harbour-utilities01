@@ -2,8 +2,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.0
 import Nemo.Configuration 1.0
+import Nemo.Notifications 1.0
 import Nemo.DBus 2.0
 import "pages"
+import 'components'
 
 ApplicationWindow {
     initialPage: Component { FirstPage { } }
@@ -12,6 +14,13 @@ ApplicationWindow {
 
     // there were some issues with pyotherside.atexit() in sailcord, don't remember which exactly
     Component.onDestroyed: py.call_sync('main.disconnect')
+
+    Notification { // Notifies about app status
+        id: notifier
+        replacesId: 0
+        onReplacesIdChanged: if (replacesId !== 0) replacesId = 0
+        isTransient: !config.infoInNotifications
+    }
 
     ConfigurationGroup {
         id: config
@@ -25,7 +34,7 @@ ApplicationWindow {
         property bool welcomeTourCompleted
 
         // Settings
-
+        property bool infoInNotifications
     }
 
     DBusInterface {
@@ -55,11 +64,7 @@ ApplicationWindow {
         }
     }
 
-    QtObject {
-        id: shared
-
-
-    }
+    Shared { id: shared }
 
     Python {
         id: py
@@ -72,6 +77,34 @@ ApplicationWindow {
 
         function init(proxy) {
             if (initialized) return
+
+            var errorStrings = {
+                'unknown': qsTr("Unknown error. This should not happen"),
+                'json': qsTr("Unknown JSON decode error"),
+                'model': qsTr("Unknown cattrs model construction error"),
+
+
+            }
+            setHandler('error', function(name, info) {
+                if (name in errorStrings) var text = errorStrings[name]
+                else {
+                    // generally should not happen unless I forget to put an error
+                    shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info)
+                    return
+                }
+
+                switch(name) {
+                /*case 'foo':
+                    shared.showError(text.arg(info))
+                    break
+                case 'bar':
+                    shared.showError(text, info+': '+other)
+                    break*/
+                default:
+                    shared.showError(text, info)
+                }
+            })
+
             addImportPath(Qt.resolvedUrl('../lib/deps'))
             addImportPath(Qt.resolvedUrl('../python'))
             importModule('main', function() {

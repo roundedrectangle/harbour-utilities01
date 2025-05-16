@@ -15,6 +15,7 @@ TARGET = harbour-utilities01
 CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-utilities01.qml \
+    qml/components/Shared.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
