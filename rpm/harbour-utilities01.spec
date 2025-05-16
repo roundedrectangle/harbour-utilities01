@@ -34,7 +34,7 @@ Utilities is an application where you can download, upload and use small utility
 
 
 %if %{package_library} == "yes"
-python3 -m pip install --upgrade httpx --target=%_builddir/deps
+python3 -m pip install --upgrade httpx attrs cattrs --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
 %endif
 

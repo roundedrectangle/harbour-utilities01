@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import httpx
 
-from util import *
+from utils import *
 
 client = httpx.Client()
 
