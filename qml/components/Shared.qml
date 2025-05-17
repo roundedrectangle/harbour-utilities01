@@ -14,6 +14,6 @@ QtObject {
         notifier.summary = summary || ''
         notifier.body = text || ''
         notifier.publish()
-        console.log(text)
+        console.log("error", summary, text)
     }
 }

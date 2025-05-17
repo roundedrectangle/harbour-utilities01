@@ -83,26 +83,24 @@ ApplicationWindow {
                 'json': qsTr("Unknown JSON decode error"),
                 'model': qsTr("Unknown cattrs model construction error"),
 
-
+                'json_repository': qsTr("Invalid JSON in a repository"),
+                'model_repository': qsTr("Invalid model in a repository."),
             }
             setHandler('error', function(name, info) {
-                if (name in errorStrings) var text = errorStrings[name]
+                if (name in errorStrings) shared.showError(errorStrings[name], info) //var text = errorStrings[name]
                 else {
                     // generally should not happen unless I forget to put an error
                     shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info)
                     return
                 }
 
-                switch(name) {
-                /*case 'foo':
+                /*switch(name) {
+                case 'foo':
                     shared.showError(text.arg(info))
                     break
-                case 'bar':
-                    shared.showError(text, info+': '+other)
-                    break*/
                 default:
                     shared.showError(text, info)
-                }
+                }*/
             })
 
             addImportPath(Qt.resolvedUrl('../lib/deps'))
