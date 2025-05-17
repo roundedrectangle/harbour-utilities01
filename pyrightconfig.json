@@ -24,4 +24,5 @@
     "reportOptionalMemberAccess": false,
     "reportUnannotatedClassAttribute": false,
     "reportUnusedCallResult": false,
+    "reportWildcardImportFromLibrary": false,
 }
