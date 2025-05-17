@@ -14,7 +14,7 @@ def load_model(_data: str | dict, model: type[T], error_name=None) -> T:
     @cattrs_safe(f'model-{error_name}' if error_name else 'model')
     def wrapper():
         data = _data
-        if isinstance(data, str):
+        if isinstance(data, (str, bytes)):
             data = json.loads(data)
         return cattrs.structure(data, model)
     return wrapper()
