@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List, Set
 
 from utils import *
 from cattrsconfigbase import CattrsConfigBase
@@ -10,23 +10,21 @@ from pyotherside_utils import *
 
 class RepositoriesManager(CattrsConfigBase):
     _name = 'repos'
-    _default_factory = dict
-    _data: dict[str, Repository]
-    _model = Dict[str, Repository]
+    _default_factory = set
+    _data: set[str]
+    _model = Set[str]
+    _unstructure_as = List[str] # JSON does not support sets
 
     @property
     def repos(self):
         return self._data
     
-    def add_repo(self, url: str, repo: Repository):
-        self.repos[url] = repo
+    def add_repo(self, url: str):
+        self.repos.add(url)
         self.save()
-    
-    def add_repo_from_url(self, url, client):
-        self.add_repo(url, Repository.from_url(url, client))
-    
+
     def remove_repo(self, url: str):
         if url in self.repos:
-            self.repos.pop(url)
+            self.repos.remove(url)
             self.save()
             return url

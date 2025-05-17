@@ -28,7 +28,9 @@ def set_constants(*args):
     data, cache = args
     repos_manager = RepositoriesManager(data)
 
+
 def add_repo(url):
     repos_manager.add_repo_from_url(url, client)
 
-remove_repo = lambda url: repos_manager.remove_repo(url)
+def remove_repo(url):
+    repos_manager.remove_repo(url)
