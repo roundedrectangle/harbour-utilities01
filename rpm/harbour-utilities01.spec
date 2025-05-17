@@ -34,7 +34,7 @@ Utilities is an application where you can download, upload and use small utility
 
 
 %if %{package_library} == "yes"
-python3 -m pip install --upgrade --no-cache-dir "https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl" --target=%_builddir/deps
+python3 -m pip install --force-reinstall --no-cache-dir "https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl" --target=%_builddir/deps
 python3 -m pip install --upgrade httpx attrs cattrs --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
 %endif
