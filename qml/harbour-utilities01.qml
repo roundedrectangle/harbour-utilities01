@@ -83,24 +83,40 @@ ApplicationWindow {
                 'json': qsTr("Unknown JSON decode error"),
                 'model': qsTr("Unknown cattrs model construction error"),
 
+                // Config
+                'configLoadJSON': qsTranslate("Errors", "Unable to load config '%1': invalid JSON data. Resetting to default"),
+                'configLoadPermissions': qsTranslate("Errors", "Unable to load config '%1': insufficient permissions"),
+                'configSavePermissions': qsTranslate("Errors", "Unable to save config '%1': insufficient permissions"),
+                'configSaveNotFound': qsTranslate("Errors", "Unable to save config '%1': file not found"),
+                'configSaveJSON': qsTranslate("Errors", "Unable to save config '%1': invalid JSON data."),
+                'configDirPermissions': qsTranslate("Errors", "Unable to create directory for config '%1': insufficient permissions"),
+
                 'json_repository': qsTr("Invalid JSON in a repository"),
                 'model_repository': qsTr("Invalid model in a repository."),
             }
-            setHandler('error', function(name, info) {
-                if (name in errorStrings) shared.showError(errorStrings[name], info) //var text = errorStrings[name]
+            setHandler('error', function(name, info, other) {
+                if (name in errorStrings) var text = errorStrings[name]
                 else {
                     // generally should not happen unless I forget to put an error
-                    shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info)
+                    shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ': ' + other)
                     return
                 }
 
-                /*switch(name) {
-                case 'foo':
+                switch(name) {
+                case 'configLoadJSON':
+                case 'configLoadPermissions':
+                case 'configSavePermissions':
                     shared.showError(text.arg(info))
+                    break
+                case 'configSaveNotFound':
+                    shared.showError(text.arg(info), qsTranslate("Errors", "This usually means that configuration directory could not be created", "Description for 'Unable to save config %1: file not found'"))
+                    break
+                case 'configDirPermissions':
+                    shared.showError(text.arg(info), other)
                     break
                 default:
                     shared.showError(text, info)
-                }*/
+                }
             })
 
             addImportPath(Qt.resolvedUrl('../lib/deps'))
