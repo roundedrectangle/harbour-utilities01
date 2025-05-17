@@ -9,9 +9,10 @@ class CattrsConfigBase(JSONConfigBase):
     "Same as the argument in cattrs.unstructure."
 
     def _load(self, data):
+        load = super()._load
         @exception_safe({cattrs.ClassValidationError: ExceptionHandlingInfo(*self.get_error('Cattrs'), return_on_exc=(False, None))})
         def wrapper():
-            state, decoded = super()._load(data)
+            state, decoded = load(data)
             if not state:
                 return False, None
             return True, cattrs.structure(decoded, self._model)
