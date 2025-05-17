@@ -1,9 +1,17 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import httpx
 from pyotherside_utils import *
 
+from python.reposmanager import RepositoriesManager
 from utils import *
+
+data: Path | None = None
+cache: Path | None = None
+
+repos_manager: RepositoriesManager | None = None
 
 client = httpx.Client()
 
@@ -16,4 +24,11 @@ def set_proxy(proxy):
     client = httpx.Client(proxy=convert_proxy(proxy))
 
 def set_constants(*args):
-    pass
+    global data, cache, repos_manager
+    data, cache = args
+    repos_manager = RepositoriesManager(data)
+
+def add_repo(url):
+    repos_manager.add_repo_from_url(url, client)
+
+remove_repo = lambda url: repos_manager.remove_repo(url)

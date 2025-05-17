@@ -22,6 +22,9 @@ class RepositoriesManager(CattrsConfigBase):
         self.repos[url] = repo
         self.save()
     
+    def add_repo_from_url(self, url, client):
+        self.add_repo(url, Repository.from_url(url, client))
+    
     def remove_repo(self, url: str):
         if url in self.repos:
             self.repos.pop(url)

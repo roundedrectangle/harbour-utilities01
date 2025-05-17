@@ -131,7 +131,7 @@ ApplicationWindow {
         }
 
         function reloadConstants(callback) {
-            call2('set_constants', [], callback)
+            call2('set_constants', [StandardPaths.data, StandardPaths.cache], callback)
         }
     }
 }
