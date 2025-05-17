@@ -91,6 +91,8 @@ ApplicationWindow {
                 'configSaveJSON': qsTranslate("Errors", "Unable to save config '%1': invalid JSON data."),
                 'configDirPermissions': qsTranslate("Errors", "Unable to create directory for config '%1': insufficient permissions"),
 
+                'configLoadCattrs': qsTranslate("Errors", "Unable to load config '%1': could not load cattrs model. Resetting to default"),
+
                 'json_repository': qsTr("Invalid JSON in a repository"),
                 'model_repository': qsTr("Invalid model in a repository."),
             }

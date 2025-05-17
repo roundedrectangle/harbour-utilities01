@@ -25,4 +25,5 @@
     "reportUnannotatedClassAttribute": false,
     "reportUnusedCallResult": false,
     "reportWildcardImportFromLibrary": false,
+    "reportImplicitOverride": false,
 }
