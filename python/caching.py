@@ -63,6 +63,5 @@ class Cacher(CacherBase):
             unpacked.mkdir(parents=True, exist_ok=True)
             try:
                 shutil.unpack_archive(archive, unpacked)
-                return True
-            except:
-                return False # error
+            except: return
+        return unpacked
