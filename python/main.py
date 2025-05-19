@@ -5,13 +5,15 @@ from pathlib import Path
 import httpx
 from pyotherside_utils import *
 
-from python.reposmanager import RepositoriesManager
+from caching import Cacher
+from reposmanager import RepositoriesManager
 from utils import *
 
 data: Path | None = None
 cache: Path | None = None
 
 repos_manager: RepositoriesManager | None = None
+cacher: Cacher | None = None
 
 client = httpx.Client()
 
@@ -23,10 +25,15 @@ def set_proxy(proxy):
         client.close()
     client = httpx.Client(proxy=convert_proxy(proxy))
 
-def set_constants(_data, _cache):
-    global data, cache, repos_manager
+def set_constants(_data, _cache, period):
+    global data, cache, repos_manager, cacher
     data, cache = Path(_data), Path(_cache)
     repos_manager = RepositoriesManager(data)
+    cacher = Cacher(cache, period)
+
+def set_cache_period(period):
+    if cacher:
+        cacher.update_period = period
 
 
 def add_repo(url):

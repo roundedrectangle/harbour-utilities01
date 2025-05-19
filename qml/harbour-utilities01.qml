@@ -26,6 +26,8 @@ ApplicationWindow {
         id: config
         path: "/apps/harbour-utilities01"
 
+        onCachePeriodChanged: py.runUpdate('set_cache_period', cachePeriod)
+
         function removeValue(key) {
             if (value(key, null) !== null)
                 setValue(key, undefined)
@@ -35,6 +37,7 @@ ApplicationWindow {
 
         // Settings
         property bool infoInNotifications
+        property int cachePeriod: 1
     }
 
     DBusInterface {
@@ -131,7 +134,7 @@ ApplicationWindow {
         }
 
         function reloadConstants(callback) {
-            call2('set_constants', [StandardPaths.data, StandardPaths.cache], callback)
+            call2('set_constants', [StandardPaths.data, StandardPaths.cache, config.cachePeriod], callback)
         }
     }
 }
