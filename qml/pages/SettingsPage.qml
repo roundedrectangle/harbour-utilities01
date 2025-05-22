@@ -10,6 +10,8 @@ Page {
             id: column
             width: parent.width
 
+            PageHeader { title: qsTr("Settings") }
+
             Slider {
                 value: config.cachePeriod
                 minimumValue: 0
@@ -40,6 +42,13 @@ Page {
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryColor
                 bottomPadding: Theme.paddingMedium
+            }
+
+            SectionHeader { text: qsTr("Debugging") }
+            TextSwitch {
+                text: qsTr("Show info messages in notifications")
+                checked: config.infoInNotifications
+                onCheckedChanged: config.infoInNotifications = checked
             }
         }
     }
