@@ -128,8 +128,11 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl('../lib/deps'))
             addImportPath(Qt.resolvedUrl('../python'))
             importModule('main', function() {
-                call2('set_proxy', function() {
-                    reloadConstants(function() {initialized=true})
+                call2('set_proxy', proxy, function() {
+                    reloadConstants(function() {
+                        initialized=true
+                        reposModel.init()
+                    })
                 })
             })
         }
@@ -137,17 +140,11 @@ ApplicationWindow {
         function reloadConstants(callback) {
             call2('set_constants', [StandardPaths.data, StandardPaths.cache, config.cachePeriod], callback)
         }
-
-        function runAndSendRepo(method, repo) {
-            call2(method, repo, function() {
-                call2('send_repo', repo)
-            })
-        }
     }
 
     ListModel {
         id: reposModel
-        Component.onCompleted: {
+        function init() {
             py.setHandler('repo', append)
             py.setHandler('repoRemove', function(hash) {
                 var i = findIndexByUrlHash(hash)
