@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from threading import Thread
 import shutil
 
 from pyotherside_utils import *
@@ -39,18 +38,16 @@ class Cacher(CacherBase):
             self._on_download = f
         return f
     
-    def cache(self, url: str, extension: str | None = None, force=False):
+    def cache(self, url: str, extension: str | None = None, force=False, return_data=True):
         """Returns True if download succeeded, and None if not (including when it was not needed)."""
         if self.update_period == None: return # Never set in settings
         if force or self.update_required(url, extension):
             path = self.get_cached_path(url, extension)
             path.parent.mkdir(parents=True, exist_ok=True)
-            if self.download_save(url, path):
+            data = self.download_save(url, path, return_data)
+            if data is not None:
                 self._on_download(url, extension)
-                return True
-    
-    def cache_bg(self, url: str, extension: str | None = None, force=False):
-        Thread(target=self.cache, args=(url, extension, force)).start()
+                return data
     
     def get_unpacked_path(self, path: str | Path):
         hashed_url = Path(path).name.split('.')[0]
