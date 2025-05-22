@@ -9,12 +9,12 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Add repo")
-                onClicked: pageStack.animatorPush(Qt.resolvedUrl("SettingsPage.qml"))
+                onClicked: pageStack.push(addRepoDialog)
 
                 Component {
                     id: addRepoDialog
                     Dialog {
-                        onAccepted: py.runAndSendRepo('add_repo', urlField.text)
+                        onAccepted: py.call2('add_repo', urlField.text)
                         Column {
                             width: parent.width
                             DialogHeader {}
@@ -47,13 +47,18 @@ Page {
                 }
             }
 
+            function remove() {
+                remorseAction(qsTr("Removed repository"), function() {
+                    py.call2('remove_repo', [model.url, model.hash])
+                })
+            }
+
             menu: Component {
                 ContextMenu {
                     MenuItem {
                         text: qsTr("Remove")
-                        onClicked: remorseAction(qsTr("Removed repository"), function() {
-                            py.call2('remove_repo', [url, hash])
-                        })
+                        // puttings function directly (as lambda) make `py` undefined
+                        onClicked: remove()
                     }
                 }
             }
