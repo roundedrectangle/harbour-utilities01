@@ -46,4 +46,4 @@ images.path = /usr/share/$${TARGET}
 python.files = python
 python.path = /usr/share/$${TARGET}
 
-INSTALLS += images pythonz
+INSTALLS += images python
