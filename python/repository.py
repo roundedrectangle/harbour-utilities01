@@ -20,3 +20,7 @@ class Repository:
     def from_url(cls, url, client: httpx.Client):
         data = client.get(url).content
         return cls.from_json(data)
+    
+    @property
+    def qml_data(self):
+        return self.name, self.description

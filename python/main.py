@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from threading import Thread
 
 import httpx
 from pyotherside_utils import *
@@ -31,8 +32,8 @@ def set_proxy(proxy):
 def set_constants(_data, _cache, period):
     global data, cache, repos_manager, cacher
     data, cache = Path(_data), Path(_cache)
-    repos_manager = RepositoriesManager(data)
     cacher = Cacher(cache, period, httpx_client=client)
+    repos_manager = RepositoriesManager(data, cacher)
 
 def set_cache_period(period):
     if cacher:
@@ -41,7 +42,8 @@ def set_cache_period(period):
 add_repo = lambda url: repos_manager.add_repo(url)
 remove_repo = lambda url: repos_manager.remove_repo(url)
 
-# def request_repos():
-#     for url in repos_manager.repos:
-#         repo = Repository.from_url(url, client)
-#         qsend('repo', repo)
+def _request_repos():
+    for repo in repos_manager:
+        qsend('repo', *repo.qml_data)
+
+request_repos = lambda: Thread(target=_request_repos).start()
