@@ -18,6 +18,7 @@ DISTFILES += qml/harbour-utilities01.qml \
     qml/components/Shared.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
+    qml/pages/ReposPage.qml \
     qml/pages/SecondPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/WelcomePage.qml \

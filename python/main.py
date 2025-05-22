@@ -1,25 +1,25 @@
 from __future__ import annotations
 
 from pathlib import Path
-from threading import Thread
+from threading import Thread, Event
 
 import httpx
 from pyotherside_utils import *
 
 from caching import Cacher
-from reposmanager import RepositoriesManager
 from repository import Repository
+from reposmanager import RepositoriesManager
 from utils import *
 
 data: Path | None = None
 cache: Path | None = None
 
-repos_manager: RepositoriesManager | None = None
-cacher: Cacher | None = None
+repos_manager: RepositoriesManager = None # pyright:ignore[reportAssignmentType]
+cacher: Cacher = None # pyright:ignore[reportAssignmentType]
+
+stop_event = Event()
 
 client = httpx.Client() # not sure if we still need it...
-
-disconnect = lambda: client.close() # So if client is changed, function would still work
 
 def set_proxy(proxy):
     global client
@@ -39,11 +39,30 @@ def set_cache_period(period):
     if cacher:
         cacher.update_period = period
 
-add_repo = lambda url: repos_manager.add_repo(url)
-remove_repo = lambda url: repos_manager.remove_repo(url)
+def disconnect():
+    client.close()
+    stop_event.set()
+
+
+def send_repo(repo: str | Repository):
+    if isinstance(repo, Repository):
+        qsend('repo', repo.qml_data)
+    else:
+        Thread(target=lambda: send_repo(repos_manager.load_repo(repo))).start()
 
 def _request_repos():
     for repo in repos_manager:
-        qsend('repo', *repo.qml_data)
+        if stop_event.is_set():
+            break
+        send_repo(repo)
 
 request_repos = lambda: Thread(target=_request_repos).start()
+
+
+def add_repo(url):
+    repos_manager.add_repo(url)
+    send_repo(url)
+
+def remove_repo(url, hash):
+    repos_manager.remove_repo(url)
+    qsend('repoRemove', hash or sha256(url))

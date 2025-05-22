@@ -11,9 +11,10 @@ ApplicationWindow {
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
+    //allowedOrientations: Orientation.All
 
     // there were some issues with pyotherside.atexit() in sailcord, don't remember which exactly
-    Component.onDestroyed: py.call_sync('main.disconnect')
+    Component.onDestruction: py.call_sync('main.disconnect')
 
     Notification { // Notifies about app status
         id: notifier
@@ -76,7 +77,7 @@ ApplicationWindow {
         onError: shared.showError(qsTranslate("Errors", "Python error"), traceback)
         onReceived: console.log("got message from python: " + data)
 
-        function call2(name, args, callback) { call('main.comm.'+name, typeof args === 'undefined' ? [] : (Array.isArray(args) ? args : [args]), callback) }
+        function call2(name, args, callback) { call('main.'+name, typeof args === 'undefined' ? [] : (Array.isArray(args) ? args : [args]), callback) }
 
         function init(proxy) {
             if (initialized) return
@@ -135,6 +136,30 @@ ApplicationWindow {
 
         function reloadConstants(callback) {
             call2('set_constants', [StandardPaths.data, StandardPaths.cache, config.cachePeriod], callback)
+        }
+
+        function runAndSendRepo(method, repo) {
+            call2(method, repo, function() {
+                call2('send_repo', repo)
+            })
+        }
+    }
+
+    ListModel {
+        id: reposModel
+        Component.onCompleted: {
+            py.setHandler('repo', append)
+            py.setHandler('repoRemove', function(hash) {
+                var i = findIndexByUrlHash(hash)
+                if (i != -1) remove(i)
+            })
+            py.call2('request_repos')
+        }
+
+        function findIndexByUrlHash(hash) {
+            for(var i=0; i < count; i++)
+                if (get(i).hash == hash) return i
+            return -1
         }
     }
 }
