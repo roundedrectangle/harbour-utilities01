@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pyotherside_utils import *
 import cattrs
 
