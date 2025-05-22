@@ -42,7 +42,7 @@ class RepositoriesManager(CattrsConfigBase):
     def load_repo(self, url: str, force=False, force2=False):
         hashed = sha256(url)
         if force or hashed not in self._repos_cache:
-            self._repos_cache[hashed] = Repository.from_json(self.cacher.cache(url, force=force2))
+            self._repos_cache[hashed] = Repository.from_json(self.cacher.cache(url, force=force2), url)
         return self._repos_cache[hashed]
     
     def __iter__(self):
