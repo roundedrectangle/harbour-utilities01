@@ -5,6 +5,7 @@ from threading import Thread
 import shutil
 
 from pyotherside_utils import *
+import httpx
 
 DEFAULT_USER_AGENT = 'harbour-utilities01'
 
@@ -16,8 +17,9 @@ class Cacher(CacherBase):
         update_period: timedelta | int | None,
         proxy: str | None = None,
         user_agent: str | None = None,
+        httpx_client: httpx.Client | None = None,
     ):
-        super().__init__(update_period, proxy=proxy, user_agent=user_agent if user_agent is not None else DEFAULT_USER_AGENT)
+        super().__init__(update_period, proxy=proxy, user_agent=user_agent if user_agent is not None else DEFAULT_USER_AGENT, httpx_client=httpx_client)
         self.path = Path(cache)
         self.files_path = self.path / 'files'
         self.unpacked_path = self.path / 'unpacked'
