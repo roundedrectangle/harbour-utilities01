@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Optional, List
+
 from pyotherside_utils import *
 from attrs import define
 import httpx
@@ -9,11 +11,12 @@ from utils import *
 
 @define
 class Repository:
-    url: str | None = None
-    hashed_url: str | None = None
+    # we can't use __future__.annotations in typing here
+    url: Optional[str] = None
+    hashed_url: Optional[str] = None
 
     name: str = ''
-    utilities: list[Utility] = []
+    utilities: List[Utility] = []
     description: str = ''
 
     @classmethod
