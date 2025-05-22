@@ -50,6 +50,13 @@ Page {
                 checked: config.infoInNotifications
                 onCheckedChanged: config.infoInNotifications = checked
             }
+
+            ButtonLayout {
+                Button {
+                    text: qsTr("Reset tutorial")
+                    onClicked: config.welcomeTourCompleted = false
+                }
+            }
         }
     }
 }

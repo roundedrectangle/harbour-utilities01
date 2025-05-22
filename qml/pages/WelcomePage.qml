@@ -9,7 +9,7 @@ Dialog {
         anchors.fill: parent
         spacing: Theme.paddingLarge
 
-        PageHeader { title: qsTr("Welcome to Utilities!") }
+        DialogHeader { title: qsTr("Welcome to Utilities!") }
 
         Label {
             anchors.horizontalCenter: parent.horizontalCenter

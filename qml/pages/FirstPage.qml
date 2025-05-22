@@ -4,8 +4,17 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
+    Timer {
+        id: welcomePageTimer
+        interval: 50
+        onTriggered: pageStack.push(Qt.resolvedUrl("WelcomePage.qml"))
+    }
+
     Component.onCompleted: {
-        if (!config.welcomeTourCompleted) pageStack.push(Qt.resolvedUrl("WelcomePage.qml"))
+        if (!config.welcomeTourCompleted) {
+            pageStack.completeAnimation()
+            welcomePageTimer.start()
+        }
     }
 
     SilicaFlickable {
