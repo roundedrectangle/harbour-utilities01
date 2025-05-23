@@ -42,13 +42,13 @@ Page {
 
         delegate: ListItem {
             width: parent.width
-            contentHeight: delegateColumn.height
+            contentHeight: Theme.itemSizeMedium
 
             Column {
                 id: delegateColumn
                 x: Theme.horizontalPageMargin
                 width: parent.width-2*x
-                anchors.bottomMargin: Theme.paddingLarge
+                //anchors.bottomMargin: Theme.paddingLarge
 
                 Label {
                     width: parent.width
