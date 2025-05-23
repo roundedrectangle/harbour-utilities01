@@ -28,7 +28,7 @@ ApplicationWindow {
         id: config
         path: "/apps/harbour-utilities01"
 
-        onCachePeriodChanged: py.runUpdate('set_cache_period', cachePeriod)
+        onCachePeriodChanged: py.call2('set_cache_period', cachePeriod)
 
         function removeValue(key) {
             if (value(key, null) !== null)
@@ -39,7 +39,7 @@ ApplicationWindow {
 
         // Settings
         property bool infoInNotifications
-        property int cachePeriod: 1
+        property int cachePeriod: 0
     }
 
     DBusInterface {
@@ -157,6 +157,12 @@ ApplicationWindow {
         function findIndexByUrlHash(hash) {
             for(var i=0; i < count; i++)
                 if (get(i).hash == hash) return i
+            return -1
+        }
+
+        function findIndexByUrl(url) {
+            for(var i=0; i < count; i++)
+                if (get(i).url == url) return i
             return -1
         }
     }
