@@ -9,7 +9,7 @@ Page {
         id: utilitiesModel
         Component.onCompleted: {
             py.setHandler('error'+repo.hash, function() { errorOccurred = true })
-            py.setHandler('utility'+repo.hash, append)
+            py.setHandler('utility'+repo.hash, function(x){append(x);console.log(JSON.stringify(x))})
 
             py.call2('send_utilities', repo.hash)
         }
@@ -80,7 +80,17 @@ Page {
             }
 
             onClicked: {
-                pageStack.push(Qt.createQmlObject(qml, window, 'utility'+repo.hash))
+                switch (type) {
+                case 0:
+                    pageStack.push(Qt.createQmlObject(content, window, 'utility'+repo.hash))
+                    break
+                case 1:
+                    pageStack.push(content)
+                    break
+                default:
+                    // Will not happen
+                    shared.showError(qsTr("Could not load utility: unknown type"))
+                }
             }
         }
     }
