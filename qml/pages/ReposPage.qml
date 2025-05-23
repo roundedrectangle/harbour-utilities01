@@ -43,6 +43,8 @@ Page {
                 anchors.bottomMargin: Theme.paddingLarge
 
                 Label {
+                    width: parent.width
+                    truncationMode: TruncationMode.Fade
                     text: name
                 }
             }
