@@ -3,18 +3,10 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-utilities01
 Exec=sailfish-qml harbour-utilities01
-Name=harbour-utilities01
-# translation example:
-# your app name in German locale (de)
-#
-# Remember to comment out the following line, if you do not want to use
-# a different app name in German locale (de).
-Name[de]=harbour-utilities01
+Name=Utilities
+Name[ru]=Утилиты
 
 [X-Sailjail]
-# Replace with your organization as a reverse domain name
 OrganizationName=io.github.roundedrectangle
-# ApplicationName does not have to be identical to Name
 ApplicationName=utilities01
-# Add the required permissions here
-Permissions=
+Permissions=Audio;Bluetooth;Camera;Internet;Location;MediaIndexing;Microphone;NFC;RemovableMedia;UserDirs;WebView;Documents;Downloads;Music;Pictures;PublicDir;Videos;Compatibility;Secrets;Contacts;Accounts
