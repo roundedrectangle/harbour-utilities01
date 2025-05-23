@@ -221,12 +221,12 @@
 <context>
     <name>WelcomePage</name>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="31"/>
+        <location filename="../qml/pages/WelcomePage.qml" line="33"/>
         <source>Welcome to Utilities!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="40"/>
+        <location filename="../qml/pages/WelcomePage.qml" line="42"/>
         <source>Select default repositories to continue</source>
         <translation type="unfinished"></translation>
     </message>
