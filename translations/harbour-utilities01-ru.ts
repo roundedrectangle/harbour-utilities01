@@ -207,17 +207,27 @@
         <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
+        <source>Clear cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="63"/>
+        <source>Open welcome page</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WelcomePage</name>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="12"/>
+        <location filename="../qml/pages/WelcomePage.qml" line="31"/>
         <source>Welcome to Utilities!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="16"/>
-        <source>Select default repositories</source>
+        <location filename="../qml/pages/WelcomePage.qml" line="40"/>
+        <source>Select default repositories to continue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -170,6 +170,14 @@
         <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open welcome page</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WelcomePage</name>
@@ -178,7 +186,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select default repositories</source>
+        <source>Select default repositories to continue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

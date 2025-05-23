@@ -1,10 +1,10 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       harbour-utilities01
 
 Summary:    Simple utilities
-Version:    0.1
+Version:    0.1a0
 Release:    1
 License:    LICENSE
 BuildArch:  noarch
