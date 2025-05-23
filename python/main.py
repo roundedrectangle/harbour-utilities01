@@ -66,3 +66,15 @@ def add_repo(url):
 def remove_repo(url, hash):
     repos_manager.remove_repo(url)
     qsend('repoRemove', hash or sha256(url))
+
+# TODO: replacing repos (when update is available (incl. forcefully))
+
+
+def send_utilities(hashed_url):
+    repo = repos_manager.get_cached_repo(hashed_url)
+    if not repo:
+        show_error('utilitiesRepoCacheNotFound')
+        qsend(f'error{hashed_url}')
+        return
+    for utility in repo.utilities:
+        qsend(f'utility{hashed_url}', utility.qml_data)
