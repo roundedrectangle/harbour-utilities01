@@ -80,7 +80,7 @@ Page {
             }
 
             onClicked: {
-                pageStack.push(Qt.createQmlObject(qml), window, 'utility'+repo.hash)
+                pageStack.push(Qt.createQmlObject(qml, window, 'utility'+repo.hash))
             }
         }
     }
