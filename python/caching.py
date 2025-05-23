@@ -72,14 +72,15 @@ class Cacher(CacherBase):
         hashed_url = Path(path).name.split('.')[0]
         return self.unpacked_path / hashed_url
     
+    def unpacking_required(self, path: str | Path):
+        unpacked = self.get_unpacked_path(path)
+        return not any(unpacked.iterdir()) or super().update_required(unpacked)
+    
     def unpack(self, archive: str | Path, force=False):
-        if self.update_period == None: return # Never set in settings
         archive = Path(archive)
         unpacked = self.get_unpacked_path(archive)
-        if force or super().update_required(unpacked):
+        if force or not any(unpacked.iterdir()) or super().update_required(unpacked):
             shutil.rmtree(unpacked, ignore_errors=True)
             unpacked.mkdir(parents=True, exist_ok=True)
-            try:
-                shutil.unpack_archive(archive, unpacked)
-            except: return
-        return unpacked
+            shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?
+        return find_contents(unpacked)

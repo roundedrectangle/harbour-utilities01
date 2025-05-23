@@ -19,13 +19,15 @@ repos_manager: RepositoriesManager = None # pyright:ignore[reportAssignmentType]
 
 stop_event = Event()
 
-client = httpx.Client()
+HTTPX_CLIENT_ARGS: dict[str, Any] = {'follow_redirects': True}
+
+client = httpx.Client(**HTTPX_CLIENT_ARGS)
 
 def set_proxy(proxy):
     global client
     if client:
         client.close()
-    client = httpx.Client(proxy=convert_proxy(proxy))
+    client = httpx.Client(proxy=convert_proxy(proxy), **HTTPX_CLIENT_ARGS)
     if caching.cacher:
         caching.cacher.httpx_client = client
 
@@ -34,12 +36,11 @@ def set_constants(_data, _cache, period):
     data, cache = Path(_data), Path(_cache)
 
     if client.is_closed:
-        client = httpx.Client()
+        client = httpx.Client(**HTTPX_CLIENT_ARGS)
     if stop_event.is_set:
         stop_event.clear()
 
     caching.cacher = Cacher(cache, period, httpx_client=client)
-    qsend("Cacher set ", str(caching.cacher))
     repos_manager = RepositoriesManager(data)
 
 def set_cache_period(period):
@@ -77,7 +78,7 @@ def remove_repo(url, hash):
 # TODO: replacing repos (when update is available (incl. forcefully))
 
 
-def send_utilities(hashed_url):
+def _send_utilities(hashed_url):
     repo = repos_manager.get_cached_repo(hashed_url)
     if not repo:
         show_error('utilitiesRepoCacheNotFound')
@@ -85,3 +86,4 @@ def send_utilities(hashed_url):
         return
     for utility in repo.utilities:
         qsend(f'utility{hashed_url}', cattrs.unstructure(utility))
+send_utilities = lambda url: Thread(target=_send_utilities, args=(url,)).start()
