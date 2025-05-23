@@ -53,9 +53,10 @@ ApplicationWindow {
         //function propertyChanged(name, value) { updateProxy() }
 
         // Only set proxy one time (for now)
+        // UPD: we still only set it one time, but we initialize before proxy is detected
         property string url
         Component.onCompleted: updateProxy()
-        onUrlChanged: py.init(url)
+        onUrlChanged: py.call2('set_proxy', proxy)
 
         function updateProxy() {
             // Sets the `url` to the global proxy URL, if enabled. Only manual proxy is supported, only the first address is used and excludes are not supported: FIXME
@@ -80,7 +81,7 @@ ApplicationWindow {
 
         function call2(name, args, callback) { call('main.'+name, typeof args === 'undefined' ? [] : (Array.isArray(args) ? args : [args]), callback) }
 
-        function init(proxy) {
+        Component.onCompleted: {
             if (initialized) return
 
             var errorStrings = {
@@ -130,11 +131,9 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl('../lib/deps'))
             addImportPath(Qt.resolvedUrl('../python'))
             importModule('main', function() {
-                call2('set_proxy', proxy, function() {
-                    reloadConstants(function() {
-                        initialized=true
-                        reposModel.init()
-                    })
+                reloadConstants(function() {
+                    initialized=true
+                    reposModel.init()
                 })
             })
         }

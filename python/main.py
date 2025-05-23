@@ -19,7 +19,7 @@ cacher: Cacher = None # pyright:ignore[reportAssignmentType]
 
 stop_event = Event()
 
-client = httpx.Client() # not sure if we still need it...
+client = httpx.Client()
 
 def set_proxy(proxy):
     global client
@@ -30,8 +30,14 @@ def set_proxy(proxy):
         cacher.httpx_client = client
 
 def set_constants(_data, _cache, period):
-    global data, cache, repos_manager, cacher
+    global data, cache, repos_manager, cacher, client
     data, cache = Path(_data), Path(_cache)
+
+    if client.is_closed:
+        client = httpx.Client()
+    if stop_event.is_set:
+        stop_event.clear()
+
     cacher = Cacher(cache, period, httpx_client=client)
     repos_manager = RepositoriesManager(data, cacher)
 
@@ -44,10 +50,10 @@ def disconnect():
     stop_event.set()
 
 
-def send_repo(repo: str | Repository):
+def send_repo(repo: str | Repository | None):
     if isinstance(repo, Repository):
         qsend('repo', cattrs.unstructure(repo))
-    else:
+    elif isinstance(repo, str):
         Thread(target=lambda: send_repo(repos_manager.load_repo(repo))).start()
 
 def _request_repos():
