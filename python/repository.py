@@ -35,6 +35,7 @@ class Repository:
 
 cattrs.global_converter.register_unstructure_hook(Repository, make_dict_unstructure_fn(Repository, cattrs.global_converter,
     utilities=override(omit=True),
+    hashed_url=override(rename='hash'),
 ))
 cattrs.global_converter.register_structure_hook(Repository, make_dict_structure_fn(Repository, cattrs.global_converter,
     url=override(omit=True),
