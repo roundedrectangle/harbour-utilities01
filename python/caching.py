@@ -7,18 +7,27 @@ from pyotherside_utils import *
 import httpx
 
 DEFAULT_USER_AGENT = 'harbour-utilities01'
+UPDATE_PERIOD_MAP = (
+    timedelta(), # On app restart
+    timedelta(hours=1),
+    timedelta(1),
+    timedelta(weeks=1),
+    timedelta(30),
+    timedelta(182.5), # half-yearly
+    timedelta(365),
+)
 
 class Cacher(CacherBase):
     """Caches single files and unpacked archives."""
     def __init__(
         self,
         cache: Path | str,
-        update_period: timedelta | int | None,
+        update_period: timedelta | int,
         proxy: str | None = None,
         user_agent: str | None = None,
         httpx_client: httpx.Client | None = None,
     ):
-        super().__init__(update_period, proxy=proxy, user_agent=user_agent if user_agent is not None else DEFAULT_USER_AGENT, httpx_client=httpx_client)
+        super().__init__(update_period, UPDATE_PERIOD_MAP, proxy=proxy, user_agent=user_agent if user_agent is not None else DEFAULT_USER_AGENT, httpx_client=httpx_client)
         self.path = Path(cache)
         self.files_path = self.path / 'files'
         self.unpacked_path = self.path / 'unpacked'
@@ -39,15 +48,16 @@ class Cacher(CacherBase):
         return f
     
     def cache(self, url: str, extension: str | None = None, force=False, return_data=True):
-        """Returns True if download succeeded, and None if not (including when it was not needed)."""
-        if self.update_period == None: return # Never set in settings
+        """Returns data (cached if it is cached already)."""
+        path = self.get_cached_path(url, extension)
         if force or self.update_required(url, extension):
-            path = self.get_cached_path(url, extension)
             path.parent.mkdir(parents=True, exist_ok=True)
-            data = self.download_save(url, path, return_data)
+            data: bytes | None = self.download_save(url, path, return_data) # pyright:ignore[reportAssignmentType]
             if data is not None:
                 self._on_download(url, extension)
                 return data
+        with open(path, 'rb') as f:
+            return f.read()
     
     def get_unpacked_path(self, path: str | Path):
         hashed_url = Path(path).name.split('.')[0]
