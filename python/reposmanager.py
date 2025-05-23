@@ -39,6 +39,9 @@ class RepositoriesManager(CattrsConfigBase):
             self.save()
             return url
     
+    def get_cached_repo(self, hashed_url: str):
+        return self._repos_cache.get(hashed_url)
+    
     def load_repo(self, url: str, force=False, force2=False):
         hashed = sha256(url)
         if force or hashed not in self._repos_cache:
