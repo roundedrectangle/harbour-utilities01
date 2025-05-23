@@ -56,7 +56,7 @@ ApplicationWindow {
         // UPD: we still only set it one time, but we initialize before proxy is detected
         property string url
         Component.onCompleted: updateProxy()
-        onUrlChanged: py.call2('set_proxy', proxy)
+        onUrlChanged: py.call2('set_proxy', url)
 
         function updateProxy() {
             // Sets the `url` to the global proxy URL, if enabled. Only manual proxy is supported, only the first address is used and excludes are not supported: FIXME
