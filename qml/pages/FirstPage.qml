@@ -6,7 +6,7 @@ Page {
 
     Timer {
         id: welcomePageTimer
-        interval: 50
+        interval: 0
         onTriggered: pageStack.push(Qt.resolvedUrl("WelcomePage.qml"))
     }
 
