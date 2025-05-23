@@ -8,6 +8,14 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: qsTr("Force refresh")
+                onClicked: {
+                    reposModel.clear()
+                    py.call2('request_repos')
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Add repo")
                 onClicked: pageStack.push(addRepoDialog)
 
@@ -64,6 +72,8 @@ Page {
                     }
                 }
             }
+
+            onClicked: pageStack.push(Qt.resolvedUrl("RepoPage.qml"), {repo: model})
         }
     }
 }
