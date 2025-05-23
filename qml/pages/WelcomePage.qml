@@ -5,15 +5,77 @@ Dialog {
     backNavigation: false
     onAccepted: config.welcomeTourCompleted = true
 
-    Column {
-        anchors.fill: parent
-        spacing: Theme.paddingLarge
+    DialogHeader { id: header }
 
-        DialogHeader { title: qsTr("Welcome to Utilities!") }
+    SilicaListView {
+        id: listView
+        width: parent.width
+        anchors {
+            top: header.bottom
+            bottom: parent.bottom
+        }
 
-        Label {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: qsTr("Select default repositories")
+        model: [
+            "https://raw.githubusercontent.com/roundedrectangle/utilities-repo/refs/heads/main/main.json",
+        ]
+
+        header: Column {
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                font.pixelSize: Theme.fontSizeExtraLarge
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignHCenter
+                color: Theme.highlightColor
+                text: qsTr("Welcome to Utilities!")
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryColor
+                text: qsTr("Select default repositories to continue")
+            }
+        }
+
+        delegate: ListItem {
+            width: parent.width
+            contentHeight: Theme.itemSizeMedium
+
+            readonly property string url: listView.model[index]
+            property bool turnedOn
+
+            Row {
+                x: Theme.horizontalPageMargin
+                width: parent.width-2*x
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: Theme.paddingMedium
+
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width - repoManageButton.width - 1*parent.spacing
+                    truncationMode: TruncationMode.Fade
+                    text: url
+                }
+
+                IconButton {
+                    id: repoManageButton
+                    icon.source: "image://theme/icon-m-" + (turnedOn ? "remove" : "add")
+                    onClicked: py.call2((turnedOn ? 'remove' : 'add') + '_repo', url)
+                }
+            }
+
+            Component.onCompleted: turnedOn = reposModel.findIndexByUrl(url) != '-1'
+
+            Connections {
+                target: reposModel
+                onCountChanged: turnedOn = reposModel.findIndexByUrl(url) != '-1'
+            }
         }
     }
 }
