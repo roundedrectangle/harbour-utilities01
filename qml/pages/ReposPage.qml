@@ -67,7 +67,7 @@ Page {
                 ContextMenu {
                     MenuItem {
                         text: qsTr("Remove")
-                        // puttings function directly (as lambda) make `py` undefined
+                        // putting function directly (as lambda) makes `py` undefined
                         onClicked: remove()
                     }
                 }
