@@ -5,7 +5,7 @@ Name:       harbour-utilities01
 
 Summary:    Simple utilities
 Version:    0.1a0
-Release:    1
+Release:    2
 License:    LICENSE
 BuildArch:  noarch
 URL:        http://example.org/
