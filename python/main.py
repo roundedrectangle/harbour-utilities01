@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from threading import Thread, Event
+import shutil
 
 import httpx
 from pyotherside_utils import *
@@ -71,7 +72,7 @@ def add_repo(url):
     repos_manager.add_repo(url)
     send_repo(url)
 
-def remove_repo(url, hash):
+def remove_repo(url, hash=''):
     repos_manager.remove_repo(url)
     qsend('repoRemove', hash or sha256(url))
 
@@ -87,3 +88,7 @@ def _send_utilities(hashed_url):
     for utility in repo.utilities:
         qsend(f'utility{hashed_url}', cattrs.unstructure(utility))
 send_utilities = lambda url: Thread(target=_send_utilities, args=(url,)).start()
+
+def clear_cache():
+    if cache:
+        shutil.rmtree(cache)
