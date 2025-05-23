@@ -81,6 +81,10 @@
         <source>Could not load utilities</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Could not load utility: unknown type</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ReposPage</name>

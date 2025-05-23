@@ -98,6 +98,11 @@
         <source>Could not load utilities</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/pages/RepoPage.qml" line="92"/>
+        <source>Could not load utility: unknown type</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ReposPage</name>
