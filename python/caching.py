@@ -4,7 +4,10 @@ from pathlib import Path
 import shutil
 
 from pyotherside_utils import *
-import httpx
+
+TYPE_CHECKING = False
+if TYPE_CHECKING:
+    import httpx
 
 DEFAULT_USER_AGENT = 'harbour-utilities01'
 UPDATE_PERIOD_MAP = (
@@ -16,6 +19,8 @@ UPDATE_PERIOD_MAP = (
     timedelta(182.5), # half-yearly
     timedelta(365),
 )
+
+cacher: Cacher = None # pyright:ignore[reportAssignmentType]
 
 class Cacher(CacherBase):
     """Caches single files and unpacked archives."""
@@ -47,17 +52,21 @@ class Cacher(CacherBase):
             self._on_download = f
         return f
     
-    def cache(self, url: str, extension: str | None = None, force=False, return_data=True):
+    def cache(self, url: str, extension: str | None = None, force=False, return_data=True, return_path=False):
         """Returns data (cached if it is cached already)."""
         path = self.get_cached_path(url, extension)
         if force or self.update_required(url, extension):
             path.parent.mkdir(parents=True, exist_ok=True)
-            data: bytes | None = self.download_save(url, path, return_data) # pyright:ignore[reportAssignmentType]
+            data = self.download_save(url, path, return_data and not return_path)
             if data is not None:
                 self._on_download(url, extension)
-                return data
-        with open(path, 'rb') as f:
-            return f.read()
+                if not return_path:
+                    return data
+        if return_path:
+            return path
+        if return_data:
+            with open(path, 'rb') as f:
+                return f.read()
     
     def get_unpacked_path(self, path: str | Path):
         hashed_url = Path(path).name.split('.')[0]

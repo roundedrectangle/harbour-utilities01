@@ -7,6 +7,7 @@ import httpx
 from pyotherside_utils import *
 
 from caching import Cacher
+import caching
 from repository import Repository
 from reposmanager import RepositoriesManager
 from utils import *
@@ -15,7 +16,6 @@ data: Path | None = None
 cache: Path | None = None
 
 repos_manager: RepositoriesManager = None # pyright:ignore[reportAssignmentType]
-cacher: Cacher = None # pyright:ignore[reportAssignmentType]
 
 stop_event = Event()
 
@@ -26,11 +26,11 @@ def set_proxy(proxy):
     if client:
         client.close()
     client = httpx.Client(proxy=convert_proxy(proxy))
-    if cacher:
-        cacher.httpx_client = client
+    if caching.cacher:
+        caching.cacher.httpx_client = client
 
 def set_constants(_data, _cache, period):
-    global data, cache, repos_manager, cacher, client
+    global data, cache, repos_manager, client
     data, cache = Path(_data), Path(_cache)
 
     if client.is_closed:
@@ -38,12 +38,13 @@ def set_constants(_data, _cache, period):
     if stop_event.is_set:
         stop_event.clear()
 
-    cacher = Cacher(cache, period, httpx_client=client)
-    repos_manager = RepositoriesManager(data, cacher)
+    caching.cacher = Cacher(cache, period, httpx_client=client)
+    qsend("Cacher set ", str(caching.cacher))
+    repos_manager = RepositoriesManager(data)
 
 def set_cache_period(period):
-    if cacher:
-        cacher.update_period = period
+    if caching.cacher:
+        caching.cacher.update_period = period
 
 def disconnect():
     client.close()

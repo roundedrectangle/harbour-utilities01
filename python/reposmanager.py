@@ -1,15 +1,14 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Set
+from typing import List, Set
 
 from utils import *
 from cattrsconfigbase import CattrsConfigBase
 from repository import Repository
 
-from pyotherside_utils import *
+import caching
 
-if TYPE_CHECKING:
-    from caching import Cacher
+from pyotherside_utils import *
 
 class RepositoriesManager(CattrsConfigBase):
     _name = 'repos'
@@ -20,9 +19,8 @@ class RepositoriesManager(CattrsConfigBase):
 
     _repos_cache: dict[str, Repository]
 
-    def __init__(self, location, cacher: Cacher):
+    def __init__(self, location):
         super().__init__(location)
-        self.cacher = cacher
         self._repos_cache = {}
 
     @property
@@ -45,7 +43,7 @@ class RepositoriesManager(CattrsConfigBase):
     def load_repo(self, url: str, force=False, force2=False):
         hashed = sha256(url)
         if force or hashed not in self._repos_cache:
-            self._repos_cache[hashed] = Repository.from_json(self.cacher.cache(url, force=force2), url)
+            self._repos_cache[hashed] = Repository.from_json(caching.cacher.cache(url, force=force2), url)
         return self._repos_cache[hashed]
     
     def __iter__(self):
