@@ -46,7 +46,7 @@ def disconnect():
 
 def send_repo(repo: str | Repository):
     if isinstance(repo, Repository):
-        qsend('repo', repo.qml_data)
+        qsend('repo', cattrs.unstructure(repo))
     else:
         Thread(target=lambda: send_repo(repos_manager.load_repo(repo))).start()
 
@@ -77,4 +77,4 @@ def send_utilities(hashed_url):
         qsend(f'error{hashed_url}')
         return
     for utility in repo.utilities:
-        qsend(f'utility{hashed_url}', utility.qml_data)
+        qsend(f'utility{hashed_url}', cattrs.unstructure(utility))

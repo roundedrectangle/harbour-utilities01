@@ -11,8 +11,8 @@ V = TypeVar('V')
 cattrs_safe = lambda name='model': exception_safe({cattrs.ClassValidationError: ExceptionHandlingInfo(name, lambda e: ', '.join(cattrs.transform_error(e)))})
 
 def load_model(_data: str | dict, model: type[V], error_name=None) -> V:
-    @json_safe(f'json-{error_name}' if error_name else 'json')
-    @cattrs_safe(f'model-{error_name}' if error_name else 'model')
+    @json_safe(f'json_{error_name}' if error_name else 'json')
+    @cattrs_safe(f'model_{error_name}' if error_name else 'model')
     def wrapper():
         data = _data
         if isinstance(data, (str, bytes)):

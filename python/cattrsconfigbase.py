@@ -6,7 +6,7 @@ import cattrs
 class CattrsConfigBase(JSONConfigBase):
     _extension = 'json'
     _model: Any = Any
-    "The model to use when structuring data. See https://catt.rs/en/v22.1.0/structuring.html"
+    "The model to use when structuring data. See https://catt.rs/en/stable/defaulthooks.html"
     _unstructure_as: Any = None
     "Same as the argument in cattrs.unstructure."
 

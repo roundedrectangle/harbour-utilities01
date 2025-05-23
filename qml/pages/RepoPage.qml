@@ -78,6 +78,10 @@ Page {
                     text: name
                 }
             }
+
+            onClicked: {
+                pageStack.push(Qt.createQmlObject(qml), window, 'utility'+repo.hash)
+            }
         }
     }
 }

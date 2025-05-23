@@ -4,6 +4,8 @@ from typing import Optional, List
 
 from pyotherside_utils import *
 from attrs import define
+import cattrs
+from cattrs.gen import make_dict_unstructure_fn, make_dict_structure_fn, override
 import httpx
 
 from utility import Utility
@@ -30,12 +32,11 @@ class Repository:
     def from_url(cls, url: str, client: httpx.Client):
         data = client.get(url).content
         return cls.from_json(data, url)
-    
-    @property
-    def qml_data(self):
-        return {
-            'url': self.url,
-            'hash': self.hashed_url,
-            'name': self.name,
-            'description': self.description,
-        }
+
+cattrs.global_converter.register_unstructure_hook(Repository, make_dict_unstructure_fn(Repository, cattrs.global_converter,
+    utilities=override(omit=True),
+))
+cattrs.global_converter.register_structure_hook(Repository, make_dict_structure_fn(Repository, cattrs.global_converter,
+    url=override(omit=True),
+    hashed_url=override(omit=True),
+))

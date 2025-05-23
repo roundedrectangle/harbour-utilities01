@@ -72,6 +72,17 @@
     </message>
 </context>
 <context>
+    <name>RepoPage</name>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not load utilities</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ReposPage</name>
     <message>
         <source>Add repo</source>
@@ -87,6 +98,10 @@
     </message>
     <message>
         <source>Removed repository</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -151,6 +166,10 @@
         <source>Show info messages in notifications</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reset tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WelcomePage</name>
@@ -183,6 +202,10 @@
     </message>
     <message>
         <source>Invalid model in a repository.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cached repo was not found in cache</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
