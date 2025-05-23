@@ -55,6 +55,14 @@ Page {
                     text: qsTr("Reset tutorial")
                     onClicked: config.welcomeTourCompleted = false
                 }
+                Button {
+                    text: qsTr("Clear cache")
+                    onClicked: py.call2('clear_cache')
+                }
+                Button {
+                    text: qsTr("Open welcome page")
+                    onClicked: pageStack.push(Qt.resolvedUrl("WelcomePage.qml"), {backNavigation: true})
+                }
             }
         }
     }
