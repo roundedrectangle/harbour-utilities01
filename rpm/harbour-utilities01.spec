@@ -20,13 +20,13 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %if %{package_library} == "yes"
-BuildRequires:  python3-base
-BuildRequires:  python3-devel
+BuildRequires: python3-base
+BuildRequires: python3-devel
 BuildRequires: python3-pip
 BuildRequires: git
-%endif 
+%endif
 %if %{package_library} == "no"
-Requires:  python3-base
+Requires: python3-base
 Requires: gcc
 Requires: python3-devel
 Requires: python3-pip
