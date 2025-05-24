@@ -79,7 +79,7 @@ class Cacher(CacherBase):
     def unpack(self, archive: str | Path, force=False):
         archive = Path(archive)
         unpacked = self.get_unpacked_path(archive)
-        if force or not unpacked.exists() or not any(unpacked.iterdir()) or super().update_required(unpacked):
+        if force or self.unpacking_required(archive):
             shutil.rmtree(unpacked, ignore_errors=True)
             unpacked.mkdir(parents=True, exist_ok=True)
             shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?

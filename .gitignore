@@ -71,3 +71,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Opal
+libs/opal-translations
+libs/opal-docs

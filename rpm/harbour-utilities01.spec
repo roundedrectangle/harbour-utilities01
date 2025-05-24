@@ -19,6 +19,8 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
+%define __provides_exclude_from ^%{_datadir}/.*$
+
 %description
 Utilities is an application where you can download, upload and use small utility applications.
 
