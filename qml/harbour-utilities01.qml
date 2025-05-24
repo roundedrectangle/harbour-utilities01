@@ -102,6 +102,7 @@ ApplicationWindow {
                 'json_repository': qsTr("Invalid JSON in a repository"),
                 'model_repository': qsTr("Invalid model in a repository."),
                 'utilitiesRepoCacheNotFound': qsTr("Cached repo was not found in cache"),
+                'utilityAboutArchiveNotAllowed': qsTr("Archived about page not allowed"),
             }
             setHandler('error', function(name, info, other) {
                 if (name in errorStrings) var text = errorStrings[name]

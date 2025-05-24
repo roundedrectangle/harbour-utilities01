@@ -5,6 +5,20 @@ Page {
     property var repo: ({})
     property bool errorOccurred
 
+    function pushTypedContent(type, content, error) {
+        switch (type) {
+        case 0:
+            pageStack.push(Qt.createQmlObject(content, window, error))
+            break
+        case 1:
+            pageStack.push(content)
+            break
+        //default:
+            // typically on -1, but unknown type will never happen and we now have other errors
+            //shared.showError(qsTr("Could not load utility: unknown type"))
+        }
+    }
+
     ListModel {
         id: utilitiesModel
         Component.onCompleted: {
@@ -79,19 +93,17 @@ Page {
                 }
             }
 
-            onClicked: {
-                switch (type) {
-                case 0:
-                    pageStack.push(Qt.createQmlObject(content, window, 'utility'+repo.hash))
-                    break
-                case 1:
-                    pageStack.push(content)
-                    break
-                default:
-                    // Will not happen
-                    shared.showError(qsTr("Could not load utility: unknown type"))
-                }
-            }
+            onClicked: pushTypedContent(type, content, 'utility '+repo.hash+' '+name)
+
+            menu: Component { ContextMenu {
+                    hasContent: aboutMenuItem.visible
+                    MenuItem {
+                        id: aboutMenuItem
+                        visible: aboutType != -1
+                        text: qsTr("About")
+                        onClicked: pushTypedContent(aboutType, about, 'utilityAbout '+repo.hash+' '+name)
+                    }
+                } }
         }
     }
 }
