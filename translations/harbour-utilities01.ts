@@ -89,6 +89,10 @@
         <source>Repositories</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>About</source>
+        <translation>О программе</translation>
+    </message>
 </context>
 <context>
     <name>LicenseListPart</name>
@@ -339,6 +343,10 @@
     </message>
     <message>
         <source>Select default repositories to continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
