@@ -5,6 +5,7 @@ Icon=harbour-utilities01
 Exec=sailfish-qml harbour-utilities01
 Name=Utilities
 Name[ru]=Утилиты
+Name[it]=Utilità
 
 [X-Sailjail]
 OrganizationName=io.github.roundedrectangle
