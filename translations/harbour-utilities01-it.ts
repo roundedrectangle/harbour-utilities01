@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="it_IT">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="6"/>
         <source>Utilities</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilità</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="9"/>
         <source>Simple utilities</source>
-        <translation type="unfinished"></translation>
+        <translation>Semplici utilità per Sailfish Os</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="18"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="8"/>
         <source>My Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Cover</translation>
     </message>
 </context>
 <context>
@@ -42,48 +42,48 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="93"/>
         <source>Unable to load config &apos;%1&apos;: invalid JSON data. Resetting to default</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare la configurazione &apos;%1&apos;: dati JSON non validi. Ripristino i dati preimpostati</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="94"/>
         <source>Unable to load config &apos;%1&apos;: insufficient permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare la configurazione &apos;%1&apos;: permessi insufficienti</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="95"/>
         <source>Unable to save config &apos;%1&apos;: insufficient permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile salvare la configurazione &apos;%1&apos;: permessi insufficienti</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="96"/>
         <source>Unable to save config &apos;%1&apos;: file not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile salvare la configurazione &apos;%1&apos;: file non trovato</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="97"/>
         <source>Unable to save config &apos;%1&apos;: invalid JSON data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile salvare la configurazione &apos;%1&apos;: dati JSON non validi.</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="98"/>
         <source>Unable to create directory for config &apos;%1&apos;: insufficient permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile creare la cartella per la configurazione &apos;%1&apos;: permessi insufficienti</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="100"/>
         <source>Unable to load config &apos;%1&apos;: could not load cattrs model. Resetting to default</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare la configurazione &apos;%1&apos;: non posso caricare i modelli cattrs. Ripristino i dati preimpostati</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="111"/>
         <source>Unknown error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore sconosciuto: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="122"/>
         <source>This usually means that configuration directory could not be created</source>
         <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
-        <translation type="unfinished"></translation>
+        <translation>Questo generalmente significa che la cartella di configurazione non può essere creata</translation>
     </message>
 </context>
 <context>
@@ -101,17 +101,17 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="34"/>
         <source>Repositories</source>
-        <translation type="unfinished"></translation>
+        <translation>Repository</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="45"/>
         <source>UI Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Template UI</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="49"/>
         <source>Hello Sailors</source>
-        <translation type="unfinished"></translation>
+        <translation>Salve Marinai</translation>
     </message>
 </context>
 <context>
@@ -188,6 +188,7 @@
         <source>show license(s)</source>
         <translation>
             <numerusform>mostra licenza</numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -261,6 +262,7 @@
         <source>License(s)</source>
         <translation>
             <numerusform>Licenza</numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -292,17 +294,17 @@
     <message>
         <location filename="../qml/pages/RepoPage.qml" line="43"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi</translation>
     </message>
     <message>
         <location filename="../qml/pages/RepoPage.qml" line="76"/>
         <source>Could not load utilities</source>
-        <translation type="unfinished"></translation>
+        <translation>Non posso caricare le utilità</translation>
     </message>
     <message>
         <location filename="../qml/pages/RepoPage.qml" line="103"/>
         <source>About</source>
-        <translation type="unfinished">Info</translation>
+        <translation>Info</translation>
     </message>
 </context>
 <context>
@@ -310,27 +312,27 @@
     <message>
         <location filename="../qml/pages/ReposPage.qml" line="11"/>
         <source>Force refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReposPage.qml" line="19"/>
         <source>Add repo</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi repo</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReposPage.qml" line="41"/>
         <source>Repositories</source>
-        <translation type="unfinished"></translation>
+        <translation>Repository</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReposPage.qml" line="61"/>
         <source>Removed repository</source>
-        <translation type="unfinished"></translation>
+        <translation>Repository rimossi</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReposPage.qml" line="69"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi</translation>
     </message>
 </context>
 <context>
@@ -338,12 +340,12 @@
     <message>
         <location filename="../qml/pages/SecondPage.qml" line="15"/>
         <source>Nested Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../qml/pages/SecondPage.qml" line="22"/>
         <source>Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Oggetto</translation>
     </message>
 </context>
 <context>
@@ -406,17 +408,17 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="55"/>
         <source>Reset tutorial</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripristina tutorial</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>Clear cache</source>
-        <translation>Elimina cache</translation>
+        <translation>Pulisci cache</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="63"/>
         <source>Open welcome page</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri pagina di benvenuto</translation>
     </message>
 </context>
 <context>
@@ -429,12 +431,12 @@
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="41"/>
         <source>Welcome to Utilities!</source>
-        <translation type="unfinished"></translation>
+        <translation>Benvenuto su Utilità!</translation>
     </message>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="50"/>
         <source>Select default repositories to continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli un repository di base per continuare</translation>
     </message>
 </context>
 <context>
@@ -442,37 +444,37 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="88"/>
         <source>Unknown error. This should not happen</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore sconosciuto: Woah carlo, questo non dovrebbe succedere</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="89"/>
         <source>Unknown JSON decode error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore sconosciuto di decodifica JSON</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="90"/>
         <source>Unknown cattrs model construction error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore sconosciuto di costruzione modelli cattrs</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="102"/>
         <source>Invalid JSON in a repository</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON non valido in un repository</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="103"/>
         <source>Invalid model in a repository.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modello non valido in un repository.</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="104"/>
         <source>Cached repo was not found in cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Il repo salvato non è stato trovato nella cache</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="105"/>
         <source>Archived about page not allowed</source>
-        <translation type="unfinished"></translation>
+        <translation>Non è permesso archiviare pagine di info</translation>
     </message>
 </context>
 </TS>
