@@ -16,12 +16,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="18"/>
         <source>Translations</source>
-        <translation type="unfinished">Перевод</translation>
+        <translation>Перевод</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="21"/>
         <source>Italian</source>
-        <translation type="unfinished">Итальянский</translation>
+        <translation>Итальянский</translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="79"/>
         <source>Python error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка Python</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="93"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="110"/>
         <source>Unknown error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="121"/>
@@ -96,7 +96,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="30"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="34"/>
@@ -351,57 +351,57 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="13"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="22"/>
         <source>On app restart</source>
-        <translation type="unfinished"></translation>
+        <translation>При перезагрузке приложения</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="23"/>
         <source>Hourly</source>
-        <translation type="unfinished"></translation>
+        <translation>Каждый час</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="24"/>
         <source>Daily</source>
-        <translation type="unfinished"></translation>
+        <translation>Ежедневно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="25"/>
         <source>Weekly</source>
-        <translation type="unfinished"></translation>
+        <translation>Еженедельно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="26"/>
         <source>Monthly</source>
-        <translation type="unfinished"></translation>
+        <translation>Ежемесячно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="27"/>
         <source>Half-yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Каждые полгода</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="28"/>
         <source>Yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Ежегодно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="40"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменяет, как часто происходит обновление кэша. Может потребоваться перезагрузка приложения</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="46"/>
         <source>Debugging</source>
-        <translation type="unfinished"></translation>
+        <translation>Отладка</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="48"/>
         <source>Show info messages in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать информационные сообщения в уведомлениях</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="55"/>
@@ -411,7 +411,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>Clear cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить кэш</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="63"/>
