@@ -35,9 +35,10 @@ class Utility:
         if self.data_type == DataType.QML_LINK:
             return 1, str(caching.cacher.cache(self.data, return_path=True))
         if self.data_type == DataType.ARCHIVE_LINK:
-            path = caching.cacher.get_cached_path(self.data)
+            # path = caching.cacher.get_cached_path(self.data)
             # if not caching.cacher.unpacking_required(path):
             #     return 1, str(caching.cacher.get_unpacked_path(path) / 'main.qml')
+            path: Path = caching.cacher.cache(self.data, return_path=True) # pyright:ignore[reportAssignmentType]
             return 1, str(caching.cacher.unpack(path) / 'main.qml')
         if self.data_type == DataType.BASE64:
             return 0, b64decode(self.data).decode()
