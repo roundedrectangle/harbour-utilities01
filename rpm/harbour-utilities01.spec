@@ -19,7 +19,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
-if %{package_library} == "yes"
+%if %{package_library} == "yes"
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires: python3-pip
