@@ -9,7 +9,7 @@ Page {
         id: utilitiesModel
         Component.onCompleted: {
             py.setHandler('error'+repo.hash, function() { errorOccurred = true })
-            py.setHandler('utility'+repo.hash, function(x){append(x);console.log(JSON.stringify(x))})
+            py.setHandler('utility'+repo.hash, append)
 
             py.call2('send_utilities', repo.hash)
         }
