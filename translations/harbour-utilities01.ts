@@ -105,7 +105,7 @@
     <name>Opal.About</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">О программе</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -238,8 +238,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Could not load utility: unknown type</source>
-        <translation type="unfinished"></translation>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
     </message>
 </context>
 <context>
@@ -347,7 +347,7 @@
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">О программе</translation>
     </message>
 </context>
 <context>
@@ -374,6 +374,10 @@
     </message>
     <message>
         <source>Cached repo was not found in cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Archived about page not allowed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

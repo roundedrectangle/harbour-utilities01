@@ -4,22 +4,22 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="6"/>
+        <location filename="../qml/pages/AboutPage.qml" line="7"/>
         <source>Utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="9"/>
+        <location filename="../qml/pages/AboutPage.qml" line="10"/>
         <source>Simple utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="18"/>
+        <location filename="../qml/pages/AboutPage.qml" line="19"/>
         <source>Translations</source>
         <translation>Traduzioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="21"/>
+        <location filename="../qml/pages/AboutPage.qml" line="22"/>
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
@@ -75,12 +75,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="110"/>
+        <location filename="../qml/harbour-utilities01.qml" line="111"/>
         <source>Unknown error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="121"/>
+        <location filename="../qml/harbour-utilities01.qml" line="122"/>
         <source>This usually means that configuration directory could not be created</source>
         <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
         <translation type="unfinished"></translation>
@@ -290,19 +290,19 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="29"/>
+        <location filename="../qml/pages/RepoPage.qml" line="43"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="62"/>
+        <location filename="../qml/pages/RepoPage.qml" line="76"/>
         <source>Could not load utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="92"/>
-        <source>Could not load utility: unknown type</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/pages/RepoPage.qml" line="103"/>
+        <source>About</source>
+        <translation type="unfinished">Info</translation>
     </message>
 </context>
 <context>
@@ -467,6 +467,11 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="104"/>
         <source>Cached repo was not found in cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-utilities01.qml" line="105"/>
+        <source>Archived about page not allowed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
