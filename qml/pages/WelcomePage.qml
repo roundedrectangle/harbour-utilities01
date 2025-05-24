@@ -5,23 +5,31 @@ Dialog {
     backNavigation: false
     onAccepted: config.welcomeTourCompleted = true
 
-    DialogHeader { id: header }
-
     SilicaListView {
         id: listView
-        width: parent.width
+        anchors.fill: parent
+        /*width: parent.width
         anchors {
             top: header.bottom
             bottom: parent.bottom
-        }
+        }*/
 
         model: [
             "https://raw.githubusercontent.com/roundedrectangle/utilities-repo/refs/heads/main/main.json",
         ]
 
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+        }
+
         header: Column {
             width: parent.width
             spacing: Theme.paddingLarge
+
+            DialogHeader { id: header }
 
             Label {
                 x: Theme.horizontalPageMargin
