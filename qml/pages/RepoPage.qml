@@ -22,7 +22,8 @@ Page {
     ListModel {
         id: utilitiesModel
         Component.onCompleted: {
-            py.setHandler('error'+repo.hash, function() { errorOccurred = true })
+            py.setHandler('error'+repo.hash, function() { errorOccurred = true; pulleyMenu.busy = false })
+            py.setHandler('finished'+repo.hash, function() { pulleyMenu.busy = false })
             py.setHandler('utility'+repo.hash, append)
 
             py.call2('send_utilities', repo.hash)
@@ -39,6 +40,8 @@ Page {
         model: utilitiesModel
 
         PullDownMenu {
+            id: pulleyMenu
+            busy: true
             MenuItem {
                 text: qsTr("Remove")
                 onClicked: {

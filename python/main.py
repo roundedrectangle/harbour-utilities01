@@ -16,13 +16,11 @@ from utils import *
 data: Path | None = None
 cache: Path | None = None
 
-repos_manager: RepositoriesManager = None # pyright:ignore[reportAssignmentType]
-
-stop_event = Event()
-
 HTTPX_CLIENT_ARGS: dict[str, Any] = {'follow_redirects': True}
 
+repos_manager: RepositoriesManager = None # pyright:ignore[reportAssignmentType]
 client = httpx.Client(**HTTPX_CLIENT_ARGS)
+stop_event = Event()
 
 def set_proxy(proxy):
     global client
@@ -87,6 +85,7 @@ def _send_utilities(hashed_url):
         return
     for utility in repo.utilities:
         qsend(f'utility{hashed_url}', cattrs.unstructure(utility))
+    qsend(f"finished{hashed_url}")
 send_utilities = lambda url: Thread(target=_send_utilities, args=(url,)).start()
 
 def clear_cache():
