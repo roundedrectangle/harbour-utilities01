@@ -14,7 +14,11 @@ TARGET = harbour-utilities01
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-utilities01.cpp
+SOURCES += src/harbour-utilities01.cpp \
+    src/logic.cpp
+
+HEADERS += \
+    src/logic.h
 
 DISTFILES += qml/harbour-utilities01.qml \
     qml/components/Shared.qml \
