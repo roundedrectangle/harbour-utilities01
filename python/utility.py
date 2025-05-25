@@ -49,7 +49,7 @@ class Utility:
 
     @property
     def qml_data(self) -> dict[str, Any]:
-        data = {'aboutType': -1, 'about': ''}
+        data = {'hash': '', 'aboutType': -1, 'about': ''}
         data['type'], data['content'] = self.data_type.qml_data(self.data)
 
         if self.about_page:
@@ -58,6 +58,8 @@ class Utility:
             about_page = Path(data['content']).parent / 'about.qml'
             if about_page.exists():
                 data['aboutType'], data['about'] = 1, str(about_page)
+        if data['type'] == 1:
+            data['hash'] = sha256(data['content'])
 
         return data
 
