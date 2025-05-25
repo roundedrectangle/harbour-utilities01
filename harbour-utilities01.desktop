@@ -2,7 +2,7 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-utilities01
-Exec=sailfish-qml harbour-utilities01
+Exec=harbour-utilities01
 Name=Utilities
 Name[ru]=Утилиты
 Name[it]=Utilità

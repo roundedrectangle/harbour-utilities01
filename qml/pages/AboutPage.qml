@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../modules/Opal/About"
+import Opal.About 1.0
 
 AboutPageBase {
     appName: qsTr("Utilities")

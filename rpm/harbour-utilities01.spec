@@ -7,17 +7,15 @@ Summary:    Simple utilities
 Version:    0.1a1
 Release:    1
 License:    LICENSE
-BuildArch:  noarch
 URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   libsailfishapp-launcher
-Requires:   pyotherside-qml-plugin-python3-qt5
-BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
+BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
+Requires:   pyotherside-qml-plugin-python3-qt5
 
 %if %{package_library} == "yes"
 BuildRequires: python3-base
@@ -33,6 +31,7 @@ Requires: python3-pip
 %endif
 
 %define __provides_exclude_from ^%{_datadir}/.*$
+%global _missing_build_ids_terminate_build 0
 
 %description
 Utilities is an application where you can download, upload and use small utility applications.
@@ -43,7 +42,7 @@ Utilities is an application where you can download, upload and use small utility
 
 %build
 
-%qmake5 
+%qmake5
 
 %make_build
 
@@ -66,7 +65,7 @@ desktop-file-install --delete-original         --dir %{buildroot}%{_datadir}/app
 
 %files
 %defattr(-,root,root,-)
-%defattr(0644,root,root,-)
+%{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png

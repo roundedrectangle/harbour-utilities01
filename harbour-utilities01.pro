@@ -12,7 +12,9 @@
 # The name of your application
 TARGET = harbour-utilities01
 
-CONFIG += sailfishapp_qml
+CONFIG += sailfishapp
+
+SOURCES += src/harbour-utilities01.cpp
 
 DISTFILES += qml/harbour-utilities01.qml \
     qml/components/Shared.qml \
