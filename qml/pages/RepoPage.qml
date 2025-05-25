@@ -31,6 +31,7 @@ Page {
 
         Component.onDestruction: {
             py.setHandler('error'+repo.hash, undefined)
+            py.setHandler('finished'+repo.hash, undefined)
             py.setHandler('utility'+repo.hash, undefined)
         }
     }
