@@ -146,7 +146,10 @@ ApplicationWindow {
 
     ListModel {
         id: reposModel
+        property bool loaded
+
         function init() {
+            py.setHandler('reposLoaded', function(state) { loaded = state })
             py.setHandler('repo', append)
             py.setHandler('repoRemove', function(hash) {
                 var i = findIndexByUrlHash(hash)

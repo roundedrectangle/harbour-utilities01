@@ -58,10 +58,13 @@ def send_repo(repo: str | Repository | None):
         Thread(target=lambda: send_repo(repos_manager.load_repo(repo))).start()
 
 def _request_repos():
+    qsend("reposLoaded", False)
     for repo in repos_manager:
         if stop_event.is_set():
+            qsend("reposLoaded", True)
             break
         send_repo(repo)
+    qsend("reposLoaded", True)
 
 request_repos = lambda: Thread(target=_request_repos).start()
 

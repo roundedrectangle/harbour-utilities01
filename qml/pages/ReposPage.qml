@@ -7,6 +7,7 @@ Page {
         model: reposModel
 
         PullDownMenu {
+            busy: !reposModel.loaded
             MenuItem {
                 text: qsTr("Force refresh")
                 onClicked: {
