@@ -33,6 +33,7 @@ Page {
             py.setHandler('error'+repo.hash, undefined)
             py.setHandler('finished'+repo.hash, undefined)
             py.setHandler('utility'+repo.hash, undefined)
+            py.call2('stop_utilities')
         }
     }
 
@@ -47,7 +48,6 @@ Page {
                 text: qsTr("Remove")
                 onClicked: {
                     pageStack.pop()
-                    remove()
                 }
             }
         }

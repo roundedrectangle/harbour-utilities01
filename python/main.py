@@ -21,6 +21,7 @@ HTTPX_CLIENT_ARGS: dict[str, Any] = {'follow_redirects': True}
 repos_manager: RepositoriesManager = None # pyright:ignore[reportAssignmentType]
 client = httpx.Client(**HTTPX_CLIENT_ARGS)
 stop_event = Event()
+utilities_stop_event = Event()
 
 def set_proxy(proxy):
     global client
@@ -51,20 +52,19 @@ def disconnect():
     stop_event.set()
 
 
-def send_repo(repo: str | Repository | None):
+def send_repo(repo: str | Repository | None, force=False, force2=False):
     if isinstance(repo, Repository):
         qsend('repo', cattrs.unstructure(repo))
     elif isinstance(repo, str):
-        Thread(target=lambda: send_repo(repos_manager.load_repo(repo))).start()
+        Thread(target=lambda: send_repo(repos_manager.load_repo(repo, force, force2))).start()
 
 def _request_repos():
-    qsend("reposLoaded", False)
+    qsend('reposLoaded', False)
     for repo in repos_manager:
         if stop_event.is_set():
-            qsend("reposLoaded", True)
             break
         send_repo(repo)
-    qsend("reposLoaded", True)
+    qsend('reposLoaded', True)
 
 request_repos = lambda: Thread(target=_request_repos).start()
 
@@ -73,23 +73,29 @@ def add_repo(url):
     repos_manager.add_repo(url)
     send_repo(url)
 
-def remove_repo(url, hash=''):
+def remove_repo(url, hashed=None):
     repos_manager.remove_repo(url)
-    qsend('repoRemove', hash or sha256(url))
+    qsend('repoRemove', hashed or sha256(url))
 
 # TODO: replacing repos (when update is available (incl. forcefully))
 
 
 def _send_utilities(hashed_url):
+    utilities_stop_event.clear()
     repo = repos_manager.get_cached_repo(hashed_url)
     if not repo:
         show_error('utilitiesRepoCacheNotFound')
         qsend(f'error{hashed_url}')
         return
     for utility in repo.utilities:
+        if stop_event.is_set() or utilities_stop_event.is_set():
+            break
         qsend(f'utility{hashed_url}', cattrs.unstructure(utility))
     qsend(f"finished{hashed_url}")
+    utilities_stop_event.clear()
 send_utilities = lambda url: Thread(target=_send_utilities, args=(url,)).start()
+
+stop_utilities = utilities_stop_event.set
 
 def clear_cache():
     if cache:
