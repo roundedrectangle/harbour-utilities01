@@ -79,6 +79,10 @@ def remove_repo(url, hashed=None):
 
 # TODO: replacing repos (when update is available (incl. forcefully))
 
+def reload_repo(url, hashed=None):
+    Thread(target=lambda:
+        qsend('repoUpdate', hashed or sha256(url), cattrs.unstructure(repos_manager.load_repo(url, True, True)))
+    ).start()
 
 def _send_utilities(hashed_url):
     utilities_stop_event.clear()

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
+    id: reposPage
     SilicaListView {
         anchors.fill: parent
         model: reposModel
@@ -70,6 +71,10 @@ Page {
                         text: qsTr("Remove")
                         // putting function directly (as lambda) makes `py` undefined
                         onClicked: remove()
+                    }
+                    MenuItem {
+                        text: qsTr("Reload")
+                        onClicked: py.call2('reload_repo', [model.url, model.hash])
                     }
                 }
             }

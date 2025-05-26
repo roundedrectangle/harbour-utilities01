@@ -155,6 +155,11 @@ ApplicationWindow {
                 var i = findIndexByUrlHash(hash)
                 if (i != -1) remove(i)
             })
+            py.setHandler('repoUpdate', function(hash, repo) {
+                var i = findIndexByUrlHash(hash)
+                if (i != -1) set(i, repo)
+                else append(repo)
+            })
             py.call2('request_repos')
         }
 
