@@ -68,6 +68,10 @@ Page {
             menu: Component {
                 ContextMenu {
                     MenuItem {
+                        text: qsTr("Copy URL")
+                        onClicked: Clipboard.text = model.url
+                    }
+                    MenuItem {
                         text: qsTr("Remove")
                         // putting function directly (as lambda) makes `py` undefined
                         onClicked: remove()
