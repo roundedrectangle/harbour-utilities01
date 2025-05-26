@@ -48,6 +48,9 @@ Page {
                 text: qsTr("Remove")
                 onClicked: {
                     pageStack.pop()
+                    Remorse.popupAction(reposPage, qsTr("Removed repository"), function() {
+                        py.call2('remove_repo', [repo.url, repo.hash])
+                    })
                 }
             }
         }
