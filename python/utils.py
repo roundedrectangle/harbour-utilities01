@@ -8,6 +8,8 @@ import cattrs
 
 V = TypeVar('V')
 
+DEFAULT_IMPORT_PATHS = {str(Path('../qml/modules').absolute())}
+
 cattrs_safe = lambda name='model': exception_safe({cattrs.ClassValidationError: ExceptionHandlingInfo(name, lambda e: ', '.join(cattrs.transform_error(e)))})
 
 def load_model(_data: str | dict, model: type[V], error_name=None) -> V:
@@ -19,3 +21,8 @@ def load_model(_data: str | dict, model: type[V], error_name=None) -> V:
             data = json.loads(data)
         return cattrs.structure(data, model)
     return wrapper()
+
+def generate_qmlscene(main: str, import_paths: Iterable[str] | None = None):
+    import_paths = DEFAULT_IMPORT_PATHS | set(import_paths or ())
+    import_flags = sum([['-I', x] for x in import_paths], [])
+    return ['qmlscene', *import_flags, main]

@@ -75,12 +75,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="111"/>
+        <location filename="../qml/harbour-utilities01.qml" line="113"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="122"/>
+        <location filename="../qml/harbour-utilities01.qml" line="125"/>
         <source>This usually means that configuration directory could not be created</source>
         <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
         <translation type="unfinished"></translation>
@@ -290,46 +290,66 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="43"/>
+        <location filename="../qml/pages/RepoPage.qml" line="48"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="76"/>
+        <location filename="../qml/pages/RepoPage.qml" line="51"/>
+        <source>Removed repository</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RepoPage.qml" line="83"/>
         <source>Could not load utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="103"/>
+        <location filename="../qml/pages/RepoPage.qml" line="110"/>
         <source>About</source>
         <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RepoPage.qml" line="116"/>
+        <source>Launch detached</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ReposPage</name>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="11"/>
+        <location filename="../qml/pages/ReposPage.qml" line="13"/>
         <source>Force refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="19"/>
+        <location filename="../qml/pages/ReposPage.qml" line="21"/>
         <source>Add repo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="41"/>
+        <location filename="../qml/pages/ReposPage.qml" line="43"/>
         <source>Repositories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="61"/>
+        <location filename="../qml/pages/ReposPage.qml" line="63"/>
         <source>Removed repository</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="69"/>
+        <location filename="../qml/pages/ReposPage.qml" line="71"/>
+        <source>Copy URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReposPage.qml" line="75"/>
         <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReposPage.qml" line="80"/>
+        <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -472,6 +492,16 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="105"/>
         <source>Archived about page not allowed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-utilities01.qml" line="106"/>
+        <source>Could not start detached utility: unsupported type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-utilities01.qml" line="107"/>
+        <source>Could not detach utility. Error code: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

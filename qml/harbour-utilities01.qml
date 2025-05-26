@@ -103,6 +103,8 @@ ApplicationWindow {
                 'model_repository': qsTr("Invalid model in a repository."),
                 'utilitiesRepoCacheNotFound': qsTr("Cached repo was not found in cache"),
                 'utilityAboutArchiveNotAllowed': qsTr("Archived about page not allowed"),
+                'utilityDetachInvalidType': qsTr("Could not start detached utility: unsupported type"),
+                'detachError': qsTr("Could not detach utility. Error code: %1")
             }
             setHandler('error', function(name, info, other) {
                 if (name in errorStrings) var text = errorStrings[name]
@@ -116,6 +118,7 @@ ApplicationWindow {
                 case 'configLoadJSON':
                 case 'configLoadPermissions':
                 case 'configSavePermissions':
+                case 'detachError':
                     shared.showError(text.arg(info))
                     break
                 case 'configSaveNotFound':

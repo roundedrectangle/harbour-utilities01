@@ -103,12 +103,21 @@ Page {
             onClicked: pushTypedContent(type, content, 'utility '+repo.hash+' '+name)
 
             menu: Component { ContextMenu {
-                    hasContent: aboutMenuItem.visible
+                    hasContent: aboutMenuItem.visible || launchDetachedMenuItem.visible
                     MenuItem {
                         id: aboutMenuItem
                         visible: aboutType != -1
                         text: qsTr("About")
                         onClicked: pushTypedContent(aboutType, about, 'utilityAbout '+repo.hash+' '+name)
+                    }
+                    MenuItem {
+                        id: launchDetachedMenuItem
+                        visible: aboutType == 1
+                        text: qsTr("Launch detached")
+                        onClicked: {
+                            console.log(repo.hash,hash)
+                            py.call2('launch_detached', [repo.hash, hash])
+                        }
                     }
                 } }
         }

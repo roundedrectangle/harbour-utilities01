@@ -1,17 +1,19 @@
 from __future__ import annotations
 
 from enum import Enum, unique
+import subprocess
 from typing import Any, Optional
 from base64 import b64decode
 
 import caching
-
-# FIXME: there is some issue that when we don't import pyotherside_utils, caching.cacher becomes None
+from utils import *
 
 from pyotherside_utils import *
 from attrs import define
 import cattrs
-from cattrs.gen import make_dict_unstructure_fn, override
+from cattrs.gen import make_dict_structure_fn, override
+
+IMPORT_PATHS: set[str] = set()
 
 @unique
 class DataType(Enum):
@@ -19,6 +21,10 @@ class DataType(Enum):
     QML = 'qml'
     QML_LINK = 'qmllink'
     ARCHIVE_LINK = 'archive'
+
+    @property
+    def qml_type(self):
+        return 0 if self in (self.QML, self.BASE64) else 1
 
     def qml_data(self, data, archive_file='main.qml', disallow_archives: str | None = None) -> tuple[int, str]:
         if self == DataType.QML:
@@ -41,35 +47,65 @@ class DataType(Enum):
 @define
 class Utility:
     # we can't use __future__.annotations in typing here
+
+    # from json
     name: str
     data_type: DataType
     data: str
     about_page_type: DataType = DataType.QML_LINK
     about_page: Optional[str] = None
 
+    # internal
+    detached_process: Optional[subprocess.Popen] = None
+
+    @property
+    def hash(self):
+        return sha256(self.data) if self.data_type.qml_type == 1 else None
+
+    #@cached_property
     @property
     def qml_data(self) -> dict[str, Any]:
-        data = {'hash': '', 'aboutType': -1, 'about': ''}
+        data = {'aboutType': -1, 'about': ''}
         data['type'], data['content'] = self.data_type.qml_data(self.data)
 
         if self.about_page:
-            data['aboutType'], data['about'] = self.about_page_type.qml_data(self.about_page, disallow_archives="utilityAboutArchiveNotAllowed")
+            data['aboutType'], data['about'] = self.about_page_type.qml_data(self.about_page, 'archive.qml', disallow_archives="utilityAboutArchiveNotAllowed")
         elif self.data_type == DataType.ARCHIVE_LINK:
             about_page = Path(data['content']).parent / 'about.qml'
             if about_page.exists():
                 data['aboutType'], data['about'] = 1, str(about_page)
-        if data['type'] == 1:
-            data['hash'] = sha256(data['content'])
 
         return data
+    
+    def start_detached(self):
+        data = self.qml_data
+        if data['type'] != 1:
+            show_error("utilityDetachInvalidType")
+            return
+        self.detached_process = subprocess.Popen(generate_qmlscene(self.qml_data['content'], IMPORT_PATHS))
+        # qsend("started")
+        return self.detached_process
 
-_base_utility_unstructure = make_dict_unstructure_fn(Utility, cattrs.global_converter,
-    data_type=override(omit=True),
-    data=override(omit=True),
-)
-def utility_unstructure(utility: Utility) -> dict[str, Any]:
-    data = _base_utility_unstructure(utility)
+    # These are unused for now:
+    @property
+    def detached_running(self):
+        return self.detached_process and self.detached_process.poll() is None
+
+    def kill_detached(self):
+        if self.detached_process:
+            self.detached_process.kill()
+            process =  self.detached_process
+            self.detached_process = None
+            return process
+
+def _utility_unstructure(utility: Utility) -> dict[str, Any]:
+    data = {'name': utility.name, 'hash': utility.hash}
     data.update(utility.qml_data)
     return data
 
-cattrs.global_converter.register_unstructure_hook(Utility, utility_unstructure)
+_utility_structure_base = make_dict_structure_fn(Utility, cattrs.global_converter,
+    detached_process=override(omit=True),
+    repository=override(omit=True),
+)
+
+cattrs.global_converter.register_unstructure_hook(Utility, _utility_unstructure)

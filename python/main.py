@@ -104,3 +104,15 @@ stop_utilities = utilities_stop_event.set
 def clear_cache():
     if cache:
         shutil.rmtree(cache)
+
+def launch_detached(repo_hash, utility_hash):
+    repo = repos_manager.get_cached_repo(repo_hash)
+    if not repo:
+        qsend('detachError', 1)
+        return
+    utility = repo.utility_from_hash(utility_hash)
+    if not utility:
+        qsend('detachError', 2)
+        return
+    if utility.start_detached():
+        qsend('detachSuccess')

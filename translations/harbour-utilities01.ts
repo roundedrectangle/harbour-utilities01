@@ -241,6 +241,14 @@
         <source>About</source>
         <translation type="unfinished">О программе</translation>
     </message>
+    <message>
+        <source>Removed repository</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch detached</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ReposPage</name>
@@ -262,6 +270,14 @@
     </message>
     <message>
         <source>Force refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy URL</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -378,6 +394,14 @@
     </message>
     <message>
         <source>Archived about page not allowed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not start detached utility: unsupported type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not detach utility. Error code: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

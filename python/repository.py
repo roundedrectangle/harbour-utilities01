@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Optional, List
 
 from pyotherside_utils import *
-from attrs import define
+from attrs import define, field
 import cattrs
 from cattrs.gen import make_dict_unstructure_fn, make_dict_structure_fn, override
 import httpx
@@ -14,18 +14,29 @@ from utils import *
 @define
 class Repository:
     # we can't use __future__.annotations in typing here
-    url: Optional[str] = None
-    hashed_url: Optional[str] = None
 
+    # from json
     name: str = ''
-    utilities: List[Utility] = []
+    utilities: List[Utility] = field(factory=list)
     description: str = ''
+
+    # internal
+    url: Optional[str] = None
+
+    def utility_from_hash(self, hashed_data):
+        "Surprisingly, it is not that slow, and it looks like caching all of this in a dict additionally would take more memory and startup time than time for this function"
+        qsend(str(self.utilities))
+        qsend(str([u.hash for u in self.utilities]))
+        return next((u for u in self.utilities if u.hash == hashed_data), None)
+
+    @property
+    def hashed_url(self):
+        return sha256(self.url) if self.url is not None else ''
 
     @classmethod
     def from_json(cls, data, url: str | None = None):
         model = load_model(data, cls, 'repository')
         model.url = url
-        model.hashed_url = None if url is None else sha256(url)
         return model
 
     @classmethod
@@ -33,11 +44,7 @@ class Repository:
         data = client.get(url).content
         return cls.from_json(data, url)
 
-cattrs.global_converter.register_unstructure_hook(Repository, make_dict_unstructure_fn(Repository, cattrs.global_converter,
-    utilities=override(omit=True),
-    hashed_url=override(rename='hash'),
-))
-cattrs.global_converter.register_structure_hook(Repository, make_dict_structure_fn(Repository, cattrs.global_converter,
-    url=override(omit=True),
-    hashed_url=override(omit=True),
-))
+_repo_unstructure_hook = make_dict_unstructure_fn(Repository, cattrs.global_converter, utilities=override(omit=True))
+cattrs.global_converter.register_unstructure_hook(Repository, lambda model: {'hash': model.hashed_url, **_repo_unstructure_hook(model)})
+
+cattrs.global_converter.register_structure_hook(Repository, make_dict_structure_fn(Repository, cattrs.global_converter, url=override(omit=True)))
