@@ -84,4 +84,4 @@ class Cacher(CacherBase):
             shutil.rmtree(unpacked, ignore_errors=True)
             unpacked.mkdir(parents=True, exist_ok=True)
             shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?
-        return find_contents(unpacked)
+        return find_extracted_contents(unpacked)
