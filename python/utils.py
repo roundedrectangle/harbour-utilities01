@@ -21,8 +21,3 @@ def load_model(_data: str | dict, model: type[V], error_name=None) -> V:
             data = json.loads(data)
         return cattrs.structure(data, model)
     return wrapper()
-
-def generate_qmlscene(main: str, import_paths: Iterable[str] | None = None):
-    import_paths = DEFAULT_IMPORT_PATHS | set(import_paths or ())
-    import_flags = sum([['-I', x] for x in import_paths], [])
-    return ['qmlscene', *import_flags, main]

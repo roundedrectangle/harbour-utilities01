@@ -6,6 +6,7 @@ from typing import Any, Optional
 from base64 import b64decode
 
 import caching
+import utils
 from utils import *
 
 from pyotherside_utils import *
@@ -82,7 +83,9 @@ class Utility:
         if data['type'] != 1:
             show_error("utilityDetachInvalidType")
             return
-        self.detached_process = subprocess.Popen(generate_qmlscene(self.qml_data['content'], IMPORT_PATHS))
+        import_paths = utils.DEFAULT_IMPORT_PATHS | set(IMPORT_PATHS or ())
+        import_flags = sum([['-I', x] for x in import_paths], [])
+        self.detached_process = subprocess.Popen(['qmlscene', *import_flags, self.qml_data['content']])
         # qsend("started")
         return self.detached_process
 
