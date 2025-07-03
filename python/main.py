@@ -54,6 +54,8 @@ def set_cache_period(period):
 def disconnect():
     client.close()
     stop_event.set()
+    if utils.temp:
+        utils.temp.clear()
 
 
 def send_repo(repo: str | Repository | None, force=False, force2=False):
