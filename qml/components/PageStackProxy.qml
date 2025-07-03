@@ -12,6 +12,9 @@ QtObject {
     function pushAttached(page, properties, operationType) { window.pageStack.pushAttached(page, properties, operationType) }
     function completeAnimation() { window.pageStack.completeAnimation() }
 
+    function animatorPush() { window.pageStack.animatorPush.apply(null, arguments) }
+    function openDialog(dialog, properties, operationType) { window.pageStack.openDialog(dialog, properties, operationType) }
+
 
     property Item currentPage: window.pageStack.currentPage.__utilities_page === 'undefined' ? window.pageStack.currentPage : null
 
@@ -41,6 +44,17 @@ QtObject {
     function navigateBack(operationType) {
         if (previousPage()) window.pageStack.navigateBack(operationType)
     }
+
+    function animatorReplace(page, properties) { replace(page, properties, PageStackAction.Animated) }
+    function animatorReplaceAbove(existingPage, page, properties) { replaceAbove(existingPage, page, properties, PageStackAction.Animated) }
+    function replaceWithDialog(dialog, properties, operationType) {
+        if (window.pageStack.currentPage.__utilities_page === 'undefined')
+            window.pageStack.replaceWithDialog(dialog, properties, operationType)
+    }
+    function pushExtra(page, properties) { return pushAttached(page, properties) }
+    function _navigateBack(operationType) { return navigateBack(operationType) }
+    function _navigateForward(operationType) { return navigateForward(operationType) }
+
 
     // TODO: do not allow modying or opening app's pages in page stack for these:
     function popAttached(page, operationType) {
