@@ -11,6 +11,7 @@ from caching import Cacher
 import caching
 from repository import Repository
 from reposmanager import RepositoriesManager
+import utils
 from utils import *
 
 data: Path | None = None
@@ -30,6 +31,8 @@ def set_proxy(proxy):
     client = httpx.Client(proxy=convert_proxy(proxy), **HTTPX_CLIENT_ARGS)
     if caching.cacher:
         caching.cacher.httpx_client = client
+    if utils.temp:
+        utils.temp.httpx_client = client
 
 def set_constants(_data, _cache, period):
     global data, cache, repos_manager, client
@@ -42,6 +45,7 @@ def set_constants(_data, _cache, period):
 
     caching.cacher = Cacher(cache, period, httpx_client=client)
     repos_manager = RepositoriesManager(data)
+    utils.temp = TemporaryManager(_cache)
 
 def set_cache_period(period):
     if caching.cacher:

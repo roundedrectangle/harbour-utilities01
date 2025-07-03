@@ -8,6 +8,8 @@ import cattrs
 
 V = TypeVar('V')
 
+temp: TemporaryManager = None #pyright: ignore[reportAssignmentType]
+
 DEFAULT_IMPORT_PATHS = {str(Path('../qml/modules').absolute())}
 
 cattrs_safe = lambda name='model': exception_safe({cattrs.ClassValidationError: ExceptionHandlingInfo(name, lambda e: ', '.join(cattrs.transform_error(e)))})
