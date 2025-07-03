@@ -58,11 +58,13 @@ class Cacher(CacherBase):
         path = self.get_cached_path(url, extension)
         if force or self.update_required(url, extension):
             path.parent.mkdir(parents=True, exist_ok=True)
-            data = self.download_save(url, path, return_data and not return_path)
-            if data is not None:
-                self._on_download(url, extension)
-                if not return_path:
-                    return data
+            try:
+                data = self.download_save(url, path, return_data and not return_path)
+                if data is not None:
+                    self._on_download(url, extension)
+                    if not return_path:
+                        return data
+            except: pass
         if return_path:
             return path
         if return_data:
