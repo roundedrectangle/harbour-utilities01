@@ -3,6 +3,8 @@ import Sailfish.Silica 1.0
 
 Page {
     id: reposPage
+    property bool __utilities_page
+
     SilicaListView {
         anchors.fill: parent
         model: reposModel

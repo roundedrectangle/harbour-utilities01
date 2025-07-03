@@ -4,22 +4,22 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="6"/>
+        <location filename="../qml/pages/AboutPage.qml" line="8"/>
         <source>Utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="9"/>
+        <location filename="../qml/pages/AboutPage.qml" line="11"/>
         <source>Simple utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="18"/>
+        <location filename="../qml/pages/AboutPage.qml" line="20"/>
         <source>Translations</source>
         <translation>Перевод</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="21"/>
+        <location filename="../qml/pages/AboutPage.qml" line="23"/>
         <source>Italian</source>
         <translation>Итальянский</translation>
     </message>
@@ -75,12 +75,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="113"/>
+        <location filename="../qml/harbour-utilities01.qml" line="115"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="125"/>
+        <location filename="../qml/harbour-utilities01.qml" line="127"/>
         <source>This usually means that configuration directory could not be created</source>
         <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
         <translation type="unfinished"></translation>
@@ -89,27 +89,27 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="26"/>
+        <location filename="../qml/pages/FirstPage.qml" line="27"/>
         <source>About</source>
         <translation type="unfinished">О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="30"/>
+        <location filename="../qml/pages/FirstPage.qml" line="31"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="34"/>
+        <location filename="../qml/pages/FirstPage.qml" line="35"/>
         <source>Repositories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="45"/>
+        <location filename="../qml/pages/FirstPage.qml" line="46"/>
         <source>UI Template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="49"/>
+        <location filename="../qml/pages/FirstPage.qml" line="50"/>
         <source>Hello Sailors</source>
         <translation type="unfinished"></translation>
     </message>
@@ -290,27 +290,27 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="48"/>
+        <location filename="../qml/pages/RepoPage.qml" line="114"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="51"/>
+        <location filename="../qml/pages/RepoPage.qml" line="117"/>
         <source>Removed repository</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="83"/>
+        <location filename="../qml/pages/RepoPage.qml" line="149"/>
         <source>Could not load utilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="110"/>
+        <location filename="../qml/pages/RepoPage.qml" line="176"/>
         <source>About</source>
         <translation type="unfinished">О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="116"/>
+        <location filename="../qml/pages/RepoPage.qml" line="182"/>
         <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
@@ -318,37 +318,37 @@
 <context>
     <name>ReposPage</name>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="13"/>
+        <location filename="../qml/pages/ReposPage.qml" line="15"/>
         <source>Force refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="21"/>
+        <location filename="../qml/pages/ReposPage.qml" line="23"/>
         <source>Add repo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="43"/>
+        <location filename="../qml/pages/ReposPage.qml" line="45"/>
         <source>Repositories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="63"/>
+        <location filename="../qml/pages/ReposPage.qml" line="65"/>
         <source>Removed repository</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="71"/>
+        <location filename="../qml/pages/ReposPage.qml" line="73"/>
         <source>Copy URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="75"/>
+        <location filename="../qml/pages/ReposPage.qml" line="77"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="80"/>
+        <location filename="../qml/pages/ReposPage.qml" line="82"/>
         <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -356,12 +356,12 @@
 <context>
     <name>SecondPage</name>
     <message>
-        <location filename="../qml/pages/SecondPage.qml" line="15"/>
+        <location filename="../qml/pages/SecondPage.qml" line="16"/>
         <source>Nested Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SecondPage.qml" line="22"/>
+        <location filename="../qml/pages/SecondPage.qml" line="23"/>
         <source>Item</source>
         <translation type="unfinished"></translation>
     </message>
@@ -369,72 +369,72 @@
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="13"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="15"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="22"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="24"/>
         <source>On app restart</source>
         <translation>При перезагрузке приложения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="23"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="25"/>
         <source>Hourly</source>
         <translation>Каждый час</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="24"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="26"/>
         <source>Daily</source>
         <translation>Ежедневно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="25"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="27"/>
         <source>Weekly</source>
         <translation>Еженедельно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="26"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="28"/>
         <source>Monthly</source>
         <translation>Ежемесячно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="27"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="29"/>
         <source>Half-yearly</source>
         <translation>Каждые полгода</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="28"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="30"/>
         <source>Yearly</source>
         <translation>Ежегодно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="40"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="42"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation>Изменяет, как часто происходит обновление кэша. Может потребоваться перезагрузка приложения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="46"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
         <source>Debugging</source>
         <translation>Отладка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
         <source>Show info messages in notifications</source>
         <translation>Показывать информационные сообщения в уведомлениях</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="55"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="57"/>
         <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
         <source>Clear cache</source>
         <translation>Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="63"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="65"/>
         <source>Open welcome page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -442,17 +442,17 @@
 <context>
     <name>WelcomePage</name>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="23"/>
+        <location filename="../qml/pages/WelcomePage.qml" line="25"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="41"/>
+        <location filename="../qml/pages/WelcomePage.qml" line="43"/>
         <source>Welcome to Utilities!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WelcomePage.qml" line="50"/>
+        <location filename="../qml/pages/WelcomePage.qml" line="52"/>
         <source>Select default repositories to continue</source>
         <translation type="unfinished"></translation>
     </message>
@@ -461,7 +461,7 @@
     <name>harbour-utilities01</name>
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="88"/>
-        <source>Unknown error. This should not happen</source>
+        <source>Unknown error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -502,6 +502,12 @@
     <message>
         <location filename="../qml/harbour-utilities01.qml" line="107"/>
         <source>Could not detach utility. Error code: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-utilities01.qml" line="109"/>
+        <location filename="../qml/harbour-utilities01.qml" line="136"/>
+        <source>Detached</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

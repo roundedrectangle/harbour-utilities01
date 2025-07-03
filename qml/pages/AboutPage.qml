@@ -3,6 +3,8 @@ import Sailfish.Silica 1.0
 import Opal.About 1.0
 
 AboutPageBase {
+    property bool __utilities_page
+
     appName: qsTr("Utilities")
     appVersion: "Alpha 1"
     appRelease: "1"

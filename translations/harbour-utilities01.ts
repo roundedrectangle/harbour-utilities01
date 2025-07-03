@@ -369,10 +369,6 @@
 <context>
     <name>harbour-utilities01</name>
     <message>
-        <source>Unknown error. This should not happen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Unknown JSON decode error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -402,6 +398,14 @@
     </message>
     <message>
         <source>Could not detach utility. Error code: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Detached</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
