@@ -39,12 +39,12 @@ class Cacher(CacherBase):
         self.unpacked_path = self.path / 'unpacked'
 
         self._on_download = lambda url, saved: None
-    
+
     def get_cached_path(self, url: str, extension: str | None = None, default_extension: str = 'u01'):
         extension = extension or get_extension_from_url(url, default=default_extension)
         url = sha256(url)
         return self.files_path / f'{url}.{extension}'
-    
+
     def update_required(self, url: str, extension: str | None = None):
         return super().update_required(self.get_cached_path(url, extension))
 
@@ -52,7 +52,7 @@ class Cacher(CacherBase):
         if callable(f):
             self._on_download = f
         return f
-    
+
     def cache(self, url: str, extension: str | None = None, force=False, return_data=True, return_path=False):
         """Returns data (cached if it is cached already)."""
         path = self.get_cached_path(url, extension)
@@ -68,15 +68,15 @@ class Cacher(CacherBase):
         if return_data:
             with open(path, 'rb') as f:
                 return f.read()
-    
+
     def get_unpacked_path(self, path: str | Path):
         hashed_url = Path(path).name.split('.')[0]
         return self.unpacked_path / hashed_url
-    
+
     def unpacking_required(self, path: str | Path):
         unpacked = self.get_unpacked_path(path)
         return not unpacked.exists() or not any(unpacked.iterdir()) or super().update_required(unpacked)
-    
+
     def unpack(self, archive: str | Path, force=False):
         archive = Path(archive)
         unpacked = self.get_unpacked_path(archive)
