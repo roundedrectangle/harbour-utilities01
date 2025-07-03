@@ -114,10 +114,7 @@ Page {
                         id: launchDetachedMenuItem
                         visible: aboutType == 1
                         text: qsTr("Launch detached")
-                        onClicked: {
-                            console.log(repo.hash,hash)
-                            py.call2('launch_detached', [repo.hash, hash])
-                        }
+                        onClicked: py.call2('launch_detached', [repo.hash, hash])
                     }
                 } }
         }

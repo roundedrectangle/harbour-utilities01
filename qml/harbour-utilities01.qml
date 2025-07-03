@@ -85,7 +85,7 @@ ApplicationWindow {
             if (initialized) return
 
             var errorStrings = {
-                'unknown': qsTr("Unknown error. This should not happen"),
+                'unknown': qsTr("Unknown error"), // This should not happen
                 'json': qsTr("Unknown JSON decode error"),
                 'model': qsTr("Unknown cattrs model construction error"),
 
@@ -104,7 +104,9 @@ ApplicationWindow {
                 'utilitiesRepoCacheNotFound': qsTr("Cached repo was not found in cache"),
                 'utilityAboutArchiveNotAllowed': qsTr("Archived about page not allowed"),
                 'utilityDetachInvalidType': qsTr("Could not start detached utility: unsupported type"),
-                'detachError': qsTr("Could not detach utility. Error code: %1")
+                'detachError': qsTr("Could not detach utility. Error code: %1"),
+
+                'detachSuccess': qsTr("Detached"),
             }
             setHandler('error', function(name, info, other) {
                 if (name in errorStrings) var text = errorStrings[name]
@@ -131,6 +133,7 @@ ApplicationWindow {
                     shared.showError(text, info)
                 }
             })
+            setHandler('detachSuccess', function() { shared.showInfo(qsTr("Detached")) })
 
             addImportPath(Qt.resolvedUrl('../lib/deps'))
             addImportPath(Qt.resolvedUrl('../python'))

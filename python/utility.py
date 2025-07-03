@@ -83,9 +83,24 @@ class Utility:
         if data['type'] != 1:
             show_error("utilityDetachInvalidType")
             return
+
+        with utils.temp.open(f'{self.hash}_main.qml', 'w') as f:
+            f.write('''\
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+ApplicationWindow{id:window
+allowedOrientations:defaultAllowedOrientations
+''')
+            main_path = json.dumps(self.qml_data["content"])
+            f.write(f'initialPage:{main_path}')
+            # TODO: cover
+            f.write('}')
+            name = str(f.name)
+
         import_paths = utils.DEFAULT_IMPORT_PATHS | set(IMPORT_PATHS or ())
         import_flags = sum([['-I', x] for x in import_paths], [])
-        self.detached_process = subprocess.Popen(['qmlscene', *import_flags, self.qml_data['content']])
+        self.detached_process = subprocess.Popen(['qmlscene', *import_flags, name])
+
         # qsend("started")
         return self.detached_process
 
