@@ -21,6 +21,7 @@ HEADERS += \
     src/logic.h
 
 DISTFILES += qml/harbour-utilities01.qml \
+    qml/components/PageStackProxy.qml \
     qml/components/Shared.qml \
     qml/cover/CoverPage.qml \
     qml/pages/AboutPage.qml \
