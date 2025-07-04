@@ -292,27 +292,27 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="60"/>
+        <location filename="../qml/pages/RepoPage.qml" line="71"/>
         <source>Remove</source>
         <translation>Rimuovi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="63"/>
+        <location filename="../qml/pages/RepoPage.qml" line="74"/>
         <source>Removed repository</source>
         <translation type="unfinished">Repository rimossi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="95"/>
+        <location filename="../qml/pages/RepoPage.qml" line="106"/>
         <source>Could not load utilities</source>
         <translation>Non posso caricare le utilità</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="122"/>
+        <location filename="../qml/pages/RepoPage.qml" line="147"/>
         <source>About</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="128"/>
+        <location filename="../qml/pages/RepoPage.qml" line="153"/>
         <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
