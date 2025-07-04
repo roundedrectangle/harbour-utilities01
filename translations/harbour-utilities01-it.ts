@@ -14,12 +14,12 @@
         <translation>Semplici utilità per Sailfish Os</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="20"/>
+        <location filename="../qml/pages/AboutPage.qml" line="26"/>
         <source>Translations</source>
         <translation>Traduzioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="23"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
@@ -292,27 +292,27 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="114"/>
+        <location filename="../qml/pages/RepoPage.qml" line="60"/>
         <source>Remove</source>
         <translation>Rimuovi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="117"/>
+        <location filename="../qml/pages/RepoPage.qml" line="63"/>
         <source>Removed repository</source>
         <translation type="unfinished">Repository rimossi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="149"/>
+        <location filename="../qml/pages/RepoPage.qml" line="95"/>
         <source>Could not load utilities</source>
         <translation>Non posso caricare le utilità</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="176"/>
+        <location filename="../qml/pages/RepoPage.qml" line="122"/>
         <source>About</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="182"/>
+        <location filename="../qml/pages/RepoPage.qml" line="128"/>
         <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
