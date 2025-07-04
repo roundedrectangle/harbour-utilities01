@@ -104,7 +104,7 @@ ApplicationWindow {
                 'utilityDetachInvalidType': qsTr("Could not start detached utility: unsupported type"),
                 'detachError': qsTr("Could not detach utility. Error code: %1"),
 
-                'detachSuccess': qsTr("Detached"),
+                'cacheTimedelta': qsTr("Unknown update period")
             }
             setHandler('error', function(name, info, other) {
                 if (name in errorStrings) var text = errorStrings[name]
