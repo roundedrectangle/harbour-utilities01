@@ -1,6 +1,8 @@
 import QtQuick 2.0
 
 QtObject {
+    property bool active: Qt.application.state === Qt.ApplicationActive
+
     // Notifications/errors
     function showInfo(summary, text) {
         notifier.appIcon = "image://theme/icon-lock-information"
