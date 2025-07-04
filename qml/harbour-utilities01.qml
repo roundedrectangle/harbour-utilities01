@@ -11,8 +11,6 @@ ApplicationWindow {
     id: window
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    //allowedOrientations: defaultAllowedOrientations
-    allowedOrientations: Orientation.All
 
     // there were some issues with pyotherside.atexit() in sailcord, don't remember which exactly
     Component.onDestruction: py.call_sync('main.disconnect')
