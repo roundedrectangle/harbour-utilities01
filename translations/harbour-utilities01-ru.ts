@@ -104,13 +104,12 @@
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="47"/>
-        <location filename="../qml/pages/FirstPage.qml" line="70"/>
+        <location filename="../qml/pages/FirstPage.qml" line="66"/>
         <source>Repositories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="59"/>
+        <location filename="../qml/pages/FirstPage.qml" line="55"/>
         <source>Hello Sailors</source>
         <translation type="unfinished"></translation>
     </message>
