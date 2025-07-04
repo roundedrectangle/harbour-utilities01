@@ -58,5 +58,5 @@ ListItem {
         }
     }
 
-    onClicked: pageStack.push(Qt.resolvedUrl("RepoPage.qml"), {repo: repo})
+    onClicked: pageStack.push(Qt.resolvedUrl("../pages/RepoPage.qml"), {repo: repo})
 }
