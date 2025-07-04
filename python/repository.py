@@ -19,6 +19,8 @@ class Repository:
     name: str = ''
     utilities: List[Utility] = field(factory=list)
     banner: str = ''
+    icon: str = ''
+    rounded_icon: bool = False
     description: str = ''
 
     # internal

@@ -22,6 +22,7 @@ HEADERS += \
 
 DISTFILES += qml/harbour-utilities01.qml \
     qml/components/PageStackProxy.qml \
+    qml/components/RepoHeader.qml \
     qml/components/RoundedImage.qml \
     qml/components/Shared.qml \
     qml/cover/CoverPage.qml \
