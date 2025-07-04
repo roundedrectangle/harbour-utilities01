@@ -25,8 +25,6 @@ class Repository:
 
     def utility_from_hash(self, hashed_data):
         "Surprisingly, it is not that slow, and it looks like caching all of this in a dict additionally would take more memory and startup time than time for this function"
-        qsend(str(self.utilities))
-        qsend(str([u.hash for u in self.utilities]))
         return next((u for u in self.utilities if u.hash == hashed_data), None)
 
     @property
