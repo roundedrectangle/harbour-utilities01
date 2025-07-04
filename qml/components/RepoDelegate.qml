@@ -2,22 +2,36 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 ListItem {
+    id: root
     width: parent.width
-    contentHeight: Theme.itemSizeMedium
+    contentHeight: Theme.itemSizeSmall
 
     property var repo
 
-    Column {
-        id: delegateColumn
-        x: Theme.horizontalPageMargin
-        width: parent.width-2*x
-        //anchors.bottomMargin: Theme.paddingLarge
-
-        Label {
-            width: parent.width
-            truncationMode: TruncationMode.Fade
-            text: name
+    RoundedImage {
+        id: roundedImage
+        source: repo.icon
+        rounded: repo.rounded_icon
+        anchors {
+            left: parent.left
+            leftMargin: Theme.horizontalPageMargin
+            verticalCenter: parent.verticalCenter
         }
+        width: Theme.iconSizeMedium
+        height: Theme.iconSizeMedium
+        highlighted: root.highlighted
+    }
+
+    Label {
+        anchors {
+            left: repo.icon ? roundedImage.right : parent.left
+            leftMargin: repo.icon ? Theme.paddingMedium : Theme.horizontalPageMargin
+            right: parent.right
+            rightMargin: Theme.horizontalPageMargin
+            verticalCenter: parent.verticalCenter
+        }
+        wrapMode: Text.Wrap
+        text: repo.name
     }
 
     function remove() {
