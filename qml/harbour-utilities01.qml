@@ -159,11 +159,11 @@ ApplicationWindow {
             py.setHandler('repo', append)
             py.setHandler('repoRemove', function(hash) {
                 var i = findIndexByUrlHash(hash)
-                if (i != -1) remove(i)
+                if (i !== -1) remove(i)
             })
             py.setHandler('repoUpdate', function(hash, repo) {
                 var i = findIndexByUrlHash(hash)
-                if (i != -1) set(i, repo)
+                if (i !== -1) set(i, repo)
                 else append(repo)
             })
             py.call2('request_repos')
@@ -171,13 +171,13 @@ ApplicationWindow {
 
         function findIndexByUrlHash(hash) {
             for(var i=0; i < count; i++)
-                if (get(i).hash == hash) return i
+                if (get(i).hash === hash) return i
             return -1
         }
 
         function findIndexByUrl(url) {
             for(var i=0; i < count; i++)
-                if (get(i).url == url) return i
+                if (get(i).url === url) return i
             return -1
         }
     }
