@@ -18,6 +18,7 @@ class Repository:
     # from json
     name: str = ''
     utilities: List[Utility] = field(factory=list)
+    banner: str = ''
     description: str = ''
 
     # internal

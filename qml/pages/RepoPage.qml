@@ -77,19 +77,40 @@ Page {
             }
         }
 
-        header: Column {
-            id: column
-
-            width: page.width
-            spacing: Theme.paddingLarge
-            PageHeader {
-                title: repo.name
+        header: Item {
+            width: parent.width
+            height: bannerLoader.active ? width / 2 : header.height
+            Loader {
+                id: bannerLoader
+                anchors.fill: parent
+                active: !!repo.banner
+                sourceComponent: Component {
+                    Image {
+                        anchors.fill: parent
+                        sourceSize {
+                            width: width
+                            height: height
+                        }
+                        source: repo.banner
+                        Rectangle {
+                            width: parent.width
+                            height: header.height + Theme.paddingLarge
+                            anchors.bottom: parent.bottom
+                            gradient: Gradient {
+                                GradientStop { position: 1.0; color: Theme.rgba('black', Theme.opacityOverlay) }
+                                GradientStop { position: 0.0; color: 'transparent' }
+                            }
+                        }
+                    }
+                }
             }
-            Label {
-                x: Theme.horizontalPageMargin
-                width: parent.width-2*x
-                wrapMode: Text.Wrap
-                text: repo.description
+            PageHeader {
+                id: header
+                width: parent.width
+                title: repo.name
+                description: repo.description
+                z: 1
+                anchors.bottom: parent.bottom
             }
         }
 
