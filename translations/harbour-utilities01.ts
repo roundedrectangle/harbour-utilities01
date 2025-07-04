@@ -74,10 +74,6 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>UI Template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hello Sailors</source>
         <translation type="unfinished"></translation>
     </message>
@@ -92,6 +88,10 @@
     <message>
         <source>About</source>
         <translation>О программе</translation>
+    </message>
+    <message>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -270,17 +270,13 @@
     </message>
 </context>
 <context>
-    <name>ReposPage</name>
-    <message>
-        <source>Add repo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Repositories</source>
-        <translation type="unfinished"></translation>
-    </message>
+    <name>ReposTab</name>
     <message>
         <source>Force refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add repo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

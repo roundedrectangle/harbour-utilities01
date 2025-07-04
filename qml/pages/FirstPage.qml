@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../modules/Opal/Tabs"
 
 Page {
     id: page
@@ -19,39 +20,54 @@ Page {
         }
     }
 
-    SilicaFlickable {
+    TabView {
         anchors.fill: parent
-        contentHeight: column.height
 
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-            }
-            MenuItem {
-                text: qsTr("Settings")
-                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
-            }
-            MenuItem {
-                text: qsTr("Repositories")
-                onClicked: pageStack.push(Qt.resolvedUrl('ReposPage.qml'))
+        Tab {
+            title: qsTr("Home")
+
+            Component {
+                TabItem {
+                    flickable: flick
+                    SilicaFlickable {
+                        id: flick
+                        anchors.fill: parent
+                        contentHeight: column.height
+
+                        PullDownMenu {
+                            MenuItem {
+                                text: qsTr("About")
+                                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+                            }
+                            MenuItem {
+                                text: qsTr("Settings")
+                                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+                            }
+                        }
+
+                        Column {
+                            id: column
+
+                            width: page.width
+                            spacing: Theme.paddingLarge
+                            Label {
+                                x: Theme.horizontalPageMargin
+                                text: qsTr("Hello Sailors")
+                                color: Theme.secondaryHighlightColor
+                                font.pixelSize: Theme.fontSizeExtraLarge
+                            }
+                        }
+                    }
+                }
             }
         }
 
-        Column {
-            id: column
-
-            width: page.width
-            spacing: Theme.paddingLarge
-            PageHeader {
-                title: qsTr("UI Template")
-            }
-            Label {
-                x: Theme.horizontalPageMargin
-                text: qsTr("Hello Sailors")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }
+        Tab {
+            title: qsTr("Repositories")
+            Component { TabItem {
+                    flickable: reposFlick
+                    ReposTab { id: reposFlick }
+                } }
         }
     }
 }

@@ -89,27 +89,28 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="28"/>
+        <location filename="../qml/pages/FirstPage.qml" line="27"/>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="39"/>
         <source>About</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="32"/>
+        <location filename="../qml/pages/FirstPage.qml" line="43"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="36"/>
+        <location filename="../qml/pages/FirstPage.qml" line="47"/>
+        <location filename="../qml/pages/FirstPage.qml" line="70"/>
         <source>Repositories</source>
         <translation>Repository</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="47"/>
-        <source>UI Template</source>
-        <translation>Template UI</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="51"/>
+        <location filename="../qml/pages/FirstPage.qml" line="59"/>
         <source>Hello Sailors</source>
         <translation>Salve Marinai</translation>
     </message>
@@ -292,22 +293,22 @@
 <context>
     <name>RepoDelegate</name>
     <message>
-        <location filename="../qml/components/RepoDelegate.qml" line="37"/>
+        <location filename="../qml/components/RepoDelegate.qml" line="38"/>
         <source>Removed repository</source>
         <translation type="unfinished">Repository rimossi</translation>
     </message>
     <message>
-        <location filename="../qml/components/RepoDelegate.qml" line="45"/>
+        <location filename="../qml/components/RepoDelegate.qml" line="46"/>
         <source>Copy URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/RepoDelegate.qml" line="49"/>
+        <location filename="../qml/components/RepoDelegate.qml" line="50"/>
         <source>Remove</source>
         <translation type="unfinished">Rimuovi</translation>
     </message>
     <message>
-        <location filename="../qml/components/RepoDelegate.qml" line="54"/>
+        <location filename="../qml/components/RepoDelegate.qml" line="55"/>
         <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -341,21 +342,16 @@
     </message>
 </context>
 <context>
-    <name>ReposPage</name>
+    <name>ReposTab</name>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="17"/>
+        <location filename="../qml/pages/ReposTab.qml" line="12"/>
         <source>Force refresh</source>
-        <translation>Ricarica</translation>
+        <translation type="unfinished">Ricarica</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReposPage.qml" line="25"/>
+        <location filename="../qml/pages/ReposTab.qml" line="20"/>
         <source>Add repo</source>
-        <translation>Aggiungi repo</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ReposPage.qml" line="47"/>
-        <source>Repositories</source>
-        <translation>Repository</translation>
+        <translation type="unfinished">Aggiungi repo</translation>
     </message>
 </context>
 <context>
