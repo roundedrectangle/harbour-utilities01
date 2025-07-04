@@ -18,4 +18,16 @@ QtObject {
         notifier.publish()
         console.log("error", summary, text)
     }
+
+    // Utility loading
+    function pushTypedContent(type, content, error, parent) {
+        switch (type) {
+        case 0:
+            window.pageStack.push(Qt.createQmlObject(content, parent, error))
+            break
+        case 1:
+            window.pageStack.push(Qt.createComponent(content, Component.Asynchronous, parent))
+            break
+        }
+    }
 }

@@ -40,47 +40,47 @@
         <translation>Ошибка Python</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="91"/>
+        <location filename="../qml/harbour-utilities01.qml" line="89"/>
         <source>Unable to load config &apos;%1&apos;: invalid JSON data. Resetting to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="92"/>
+        <location filename="../qml/harbour-utilities01.qml" line="90"/>
         <source>Unable to load config &apos;%1&apos;: insufficient permissions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="93"/>
+        <location filename="../qml/harbour-utilities01.qml" line="91"/>
         <source>Unable to save config &apos;%1&apos;: insufficient permissions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="94"/>
+        <location filename="../qml/harbour-utilities01.qml" line="92"/>
         <source>Unable to save config &apos;%1&apos;: file not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="95"/>
+        <location filename="../qml/harbour-utilities01.qml" line="93"/>
         <source>Unable to save config &apos;%1&apos;: invalid JSON data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="96"/>
+        <location filename="../qml/harbour-utilities01.qml" line="94"/>
         <source>Unable to create directory for config &apos;%1&apos;: insufficient permissions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="98"/>
+        <location filename="../qml/harbour-utilities01.qml" line="96"/>
         <source>Unable to load config &apos;%1&apos;: could not load cattrs model. Resetting to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="113"/>
+        <location filename="../qml/harbour-utilities01.qml" line="111"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="125"/>
+        <location filename="../qml/harbour-utilities01.qml" line="123"/>
         <source>This usually means that configuration directory could not be created</source>
         <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
         <translation type="unfinished"></translation>
@@ -313,28 +313,18 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="71"/>
+        <location filename="../qml/pages/RepoPage.qml" line="57"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="74"/>
+        <location filename="../qml/pages/RepoPage.qml" line="60"/>
         <source>Removed repository</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="94"/>
+        <location filename="../qml/pages/RepoPage.qml" line="80"/>
         <source>Could not load utilities</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/RepoPage.qml" line="135"/>
-        <source>About</source>
-        <translation type="unfinished">О программе</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/RepoPage.qml" line="141"/>
-        <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -360,6 +350,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="25"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="32"/>
         <source>On app restart</source>
         <translation>При перезагрузке приложения</translation>
     </message>
@@ -394,33 +385,46 @@
         <translation>Ежегодно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="43"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="44"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation>Изменяет, как часто происходит обновление кэша. Может потребоваться перезагрузка приложения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="49"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
         <source>Debugging</source>
         <translation>Отладка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="51"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="52"/>
         <source>Show info messages in notifications</source>
         <translation>Показывать информационные сообщения в уведомлениях</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="58"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="62"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="63"/>
         <source>Clear cache</source>
         <translation>Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="67"/>
         <source>Open welcome page</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UtilityDelegate</name>
+    <message>
+        <location filename="../qml/components/UtilityDelegate.qml" line="46"/>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/UtilityDelegate.qml" line="52"/>
+        <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -445,53 +449,57 @@
 <context>
     <name>harbour-utilities01</name>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="86"/>
+        <location filename="../qml/harbour-utilities01.qml" line="84"/>
         <source>Unknown error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="87"/>
+        <location filename="../qml/harbour-utilities01.qml" line="85"/>
         <source>Unknown JSON decode error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="88"/>
+        <location filename="../qml/harbour-utilities01.qml" line="86"/>
         <source>Unknown cattrs model construction error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="100"/>
+        <location filename="../qml/harbour-utilities01.qml" line="98"/>
         <source>Invalid JSON in a repository</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="101"/>
+        <location filename="../qml/harbour-utilities01.qml" line="99"/>
         <source>Invalid model in a repository.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="102"/>
+        <location filename="../qml/harbour-utilities01.qml" line="100"/>
         <source>Cached repo was not found in cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="103"/>
+        <location filename="../qml/harbour-utilities01.qml" line="101"/>
         <source>Archived about page not allowed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="104"/>
+        <location filename="../qml/harbour-utilities01.qml" line="102"/>
         <source>Could not start detached utility: unsupported type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="105"/>
+        <location filename="../qml/harbour-utilities01.qml" line="103"/>
         <source>Could not detach utility. Error code: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-utilities01.qml" line="107"/>
-        <location filename="../qml/harbour-utilities01.qml" line="134"/>
+        <location filename="../qml/harbour-utilities01.qml" line="105"/>
+        <source>Unknown update period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-utilities01.qml" line="132"/>
         <source>Detached</source>
         <translation type="unfinished"></translation>
     </message>

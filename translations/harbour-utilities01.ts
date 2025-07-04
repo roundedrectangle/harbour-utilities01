@@ -257,15 +257,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About</source>
-        <translation type="unfinished">О программе</translation>
-    </message>
-    <message>
         <source>Removed repository</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -340,6 +332,17 @@
     </message>
 </context>
 <context>
+    <name>UtilityDelegate</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <source>Launch detached</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Utilities!</source>
@@ -394,6 +397,10 @@
     </message>
     <message>
         <source>Detached</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown update period</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

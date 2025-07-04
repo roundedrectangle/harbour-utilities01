@@ -26,6 +26,7 @@ DISTFILES += qml/harbour-utilities01.qml \
     qml/components/RepoHeader.qml \
     qml/components/RoundedImage.qml \
     qml/components/Shared.qml \
+    qml/components/UtilityDelegate.qml \
     qml/cover/CoverPage.qml \
     qml/pages/AboutPage.qml \
     qml/pages/FirstPage.qml \

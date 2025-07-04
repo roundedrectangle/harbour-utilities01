@@ -16,7 +16,7 @@ QtObject {
     function openDialog(dialog, properties, operationType) { window.pageStack.openDialog(dialog, properties, operationType) }
 
 
-    property Item currentPage: window.pageStack.currentPage.__utilities_page === 'undefined' ? window.pageStack.currentPage : null
+    property Item currentPage: window.pageStack.currentPage && window.pageStack.currentPage.__utilities_page === 'undefined' ? window.pageStack.currentPage : null
 
     function find(func) {
         return window.pageStack.find(function(page) { return typeof page.__utilities_page === 'undefined' && func(page) })

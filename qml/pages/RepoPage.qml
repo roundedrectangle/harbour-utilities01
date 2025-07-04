@@ -18,20 +18,6 @@ Page {
     }
     property alias pageStack: pageStack
 
-    function pushTypedContent(type, content, error) {
-        switch (type) {
-        case 0:
-            window.pageStack.push(Qt.createQmlObject(content, page, error))
-            break
-        case 1:
-            window.pageStack.push(Qt.createComponent(content, Component.Asynchronous, page))
-            break
-        //default:
-            // typically on -1, but unknown type will never happen and we now have other errors
-            //shared.showError(qsTr("Could not load utility: unknown type"))
-        }
-    }
-
     ListModel {
         id: utilitiesModel
         Component.onCompleted: {
@@ -61,6 +47,7 @@ Page {
     }
 
     SilicaListView {
+        id: listView
         anchors.fill: parent
         model: utilitiesModel
 
@@ -78,9 +65,7 @@ Page {
             }
         }
 
-        header: RepoHeader {
-            repo: page.repo
-        }
+        header: RepoHeader { repo: page.repo }
 
         BusyIndicator {
             size: BusyIndicatorSize.Large
@@ -94,54 +79,10 @@ Page {
             text: qsTr("Could not load utilities")
         }
 
-        delegate: ListItem {
-            width: parent.width
-            contentHeight: delegateColumn.height
-            enabled: loaded
-
-            Row {
-                id: delegateColumn
-                x: Theme.horizontalPageMargin
-                width: parent.width-2*x
-                height: Theme.itemSizeSmall
-
-                //Image {}
-
-                Label {
-                    id: label
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width - busyIndicator.width - (parent.visibleChildren.length - 1)*parent.spacing
-                    truncationMode: TruncationMode.Fade
-                    text: name
-                    Behavior on width { NumberAnimation { duration: 200 } }
-                    opacity: loaded ? 1 : Theme.opacityFaint
-                }
-
-                BusyIndicator {
-                    id: busyIndicator
-                    anchors.verticalCenter: parent.verticalCenter
-                    running: !loaded
-                    size: BusyIndicatorSize.Small
-                }
-            }
-
-            onClicked: pushTypedContent(type, content, 'utility '+repo.hash+' '+name)
-
-            menu: Component { ContextMenu {
-                    hasContent: aboutMenuItem.visible || launchDetachedMenuItem.visible
-                    MenuItem {
-                        id: aboutMenuItem
-                        visible: aboutType != -1
-                        text: qsTr("About")
-                        onClicked: pushTypedContent(aboutType, about, 'utilityAbout '+repo.hash+' '+name)
-                    }
-                    MenuItem {
-                        id: launchDetachedMenuItem
-                        visible: type == 1
-                        text: qsTr("Launch detached")
-                        onClicked: py.call2('launch_detached', [repo.hash, hash])
-                    }
-                } }
+        property alias repo: page.repo
+        delegate: UtilityDelegate {
+            repo: listView.repo
+            utility: model
         }
     }
 }
