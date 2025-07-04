@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: reposPage
+    allowedOrientations: defaultAllowedOrientations
     property bool __utilities_page
 
     SilicaListView {

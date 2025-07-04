@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import Opal.About 1.0
 
 AboutPageBase {
+    allowedOrientations: defaultAllowedOrientations
     property bool __utilities_page
 
     appName: qsTr("Utilities")

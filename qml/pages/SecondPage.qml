@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
+    allowedOrientations: defaultAllowedOrientations
     property bool __utilities_page
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations

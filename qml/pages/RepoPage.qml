@@ -4,6 +4,7 @@ import "../components"
 
 Page {
     id: page
+    allowedOrientations: defaultAllowedOrientations
     property bool __utilities_page
 
     property var repo: ({})
