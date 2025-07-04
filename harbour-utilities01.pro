@@ -30,7 +30,6 @@ DISTFILES += qml/harbour-utilities01.qml \
     qml/pages/FirstPage.qml \
     qml/pages/RepoPage.qml \
     qml/pages/ReposPage.qml \
-    qml/pages/SecondPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/WelcomePage.qml \
     rpm/harbour-utilities01.changes.in \
