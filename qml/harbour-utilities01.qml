@@ -26,7 +26,7 @@ ApplicationWindow {
         id: config
         path: "/apps/harbour-utilities01"
 
-        onCachePeriodChanged: py.call2('set_cache_period', cachePeriod)
+        onCachePeriodChanged: if (py.initialized) py.call2('set_cache_period', cachePeriod)
 
         function removeValue(key) {
             if (value(key, null) !== null)
@@ -80,8 +80,6 @@ ApplicationWindow {
         function call2(name, args, callback) { call('main.'+name, typeof args === 'undefined' ? [] : (Array.isArray(args) ? args : [args]), callback) }
 
         Component.onCompleted: {
-            if (initialized) return
-
             var errorStrings = {
                 'unknown': qsTr("Unknown error"), // This should not happen
                 'json': qsTr("Unknown JSON decode error"),
