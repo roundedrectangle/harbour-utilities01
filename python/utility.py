@@ -15,6 +15,7 @@ import cattrs
 from cattrs.gen import make_dict_structure_fn, override
 
 IMPORT_PATHS: set[str] = set()
+STUB_FULL_QML_DATA = {'type': -1, 'content': '', 'aboutType': -1, 'about': ''}
 
 @unique
 class DataType(Enum):
@@ -61,7 +62,7 @@ class Utility:
 
     @property
     def hash(self):
-        return sha256(self.data) if self.data_type.qml_type == 1 else None
+        return sha256(self.data)
 
     #@cached_property
     @property
@@ -116,9 +117,19 @@ allowedOrientations:defaultAllowedOrientations
             self.detached_process = None
             return process
 
-def _utility_unstructure(utility: Utility) -> dict[str, Any]:
-    data = {'name': utility.name, 'hash': utility.hash}
-    data.update(utility.qml_data)
+@define
+class UtilityUnstructureInfo:
+    utility: Utility
+    full: bool = True
+
+def _utility_unstructure(utility: Utility | UtilityUnstructureInfo) -> dict[str, Any]:
+    if isinstance(utility, UtilityUnstructureInfo):
+        full = utility.full
+        utility = utility.utility
+    else:
+        full = True
+    data = {'name': utility.name, 'hash': utility.hash, 'loaded': full}
+    data.update(utility.qml_data if full else STUB_FULL_QML_DATA)
     return data
 
 _utility_structure_base = make_dict_structure_fn(Utility, cattrs.global_converter,
@@ -127,3 +138,4 @@ _utility_structure_base = make_dict_structure_fn(Utility, cattrs.global_converte
 )
 
 cattrs.global_converter.register_unstructure_hook(Utility, _utility_unstructure)
+cattrs.global_converter.register_unstructure_hook(UtilityUnstructureInfo, _utility_unstructure)

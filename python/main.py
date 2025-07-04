@@ -9,6 +9,7 @@ from pyotherside_utils import *
 
 from caching import Cacher
 import caching
+from utility import UtilityUnstructureInfo
 from repository import Repository
 from reposmanager import RepositoriesManager
 import utils
@@ -100,7 +101,12 @@ def _send_utilities(hashed_url):
     for utility in repo.utilities:
         if stop_event.is_set() or utilities_stop_event.is_set():
             break
-        qsend(f'utility{hashed_url}', cattrs.unstructure(utility))
+        qsend(f'utility{hashed_url}', cattrs.unstructure(UtilityUnstructureInfo(utility, full=False)))
+    for utility in repo.utilities:
+        if stop_event.is_set() or utilities_stop_event.is_set():
+            break
+        res = cattrs.unstructure(utility)
+        qsend(f'utilityUpdate{hashed_url}', res['hash'], res)
     qsend(f"finished{hashed_url}")
     utilities_stop_event.clear()
 send_utilities = lambda url: Thread(target=_send_utilities, args=(url,)).start()

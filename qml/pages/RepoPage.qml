@@ -37,6 +37,10 @@ Page {
             py.setHandler('error'+repo.hash, function() { errorOccurred = true; pulleyMenu.busy = false })
             py.setHandler('finished'+repo.hash, function() { pulleyMenu.busy = false })
             py.setHandler('utility'+repo.hash, append)
+            py.setHandler('utilityUpdate'+repo.hash, function(hash, newData) {
+                var i = findIndexByUrlHash(hash)
+                if (i !== -1) set(i, newData)
+            })
 
             py.call2('send_utilities', repo.hash)
         }
@@ -46,6 +50,12 @@ Page {
             py.setHandler('finished'+repo.hash, undefined)
             py.setHandler('utility'+repo.hash, undefined)
             py.call2('stop_utilities')
+        }
+
+        function findIndexByUrlHash(hash) {
+            for(var i=0; i < count; i++)
+                if (get(i).hash === hash) return i
+            return -1
         }
     }
 
@@ -97,18 +107,32 @@ Page {
 
         delegate: ListItem {
             width: parent.width
-            contentHeight: Theme.itemSizeMedium
+            contentHeight: delegateColumn.height
+            enabled: loaded
 
-            Column {
+            Row {
                 id: delegateColumn
                 x: Theme.horizontalPageMargin
                 width: parent.width-2*x
-                //anchors.bottomMargin: Theme.paddingLarge
+                height: Theme.itemSizeSmall
+
+                //Image {}
 
                 Label {
-                    width: parent.width
+                    id: label
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width - busyIndicator.width - (parent.visibleChildren.length - 1)*parent.spacing
                     truncationMode: TruncationMode.Fade
                     text: name
+                    Behavior on width { NumberAnimation { duration: 200 } }
+                    opacity: loaded ? 1 : Theme.opacityFaint
+                }
+
+                BusyIndicator {
+                    id: busyIndicator
+                    anchors.verticalCenter: parent.verticalCenter
+                    running: !loaded
+                    size: BusyIndicatorSize.Small
                 }
             }
 
@@ -124,7 +148,7 @@ Page {
                     }
                     MenuItem {
                         id: launchDetachedMenuItem
-                        visible: aboutType == 1
+                        visible: type == 1
                         text: qsTr("Launch detached")
                         onClicked: py.call2('launch_detached', [repo.hash, hash])
                     }
