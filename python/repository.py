@@ -47,6 +47,6 @@ class Repository:
         return cls.from_json(data, url)
 
 _repo_unstructure_hook = make_dict_unstructure_fn(Repository, cattrs.global_converter, utilities=override(omit=True))
-cattrs.global_converter.register_unstructure_hook(Repository, lambda model: {'hash': model.hashed_url, **_repo_unstructure_hook(model), 'icon': caching.cacher.easy(model.icon)})
+cattrs.global_converter.register_unstructure_hook(Repository, lambda model: {'hash': model.hashed_url, **_repo_unstructure_hook(model), 'icon': caching.cacher.easy(model.icon, update='repoIcon')})
 
 cattrs.global_converter.register_structure_hook(Repository, make_dict_structure_fn(Repository, cattrs.global_converter, url=override(omit=True)))

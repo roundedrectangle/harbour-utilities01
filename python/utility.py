@@ -137,8 +137,8 @@ def _utility_unstructure(utility: Utility | UtilityUnstructureInfo) -> dict[str,
 
         'loaded': full,
     }
-    data['icon'] = caching.cacher.easy(utility.icon, force_cache=full)
     data.update(utility.qml_data if full else STUB_FULL_QML_DATA)
+    data['icon'] = caching.cacher.easy(utility.icon, force_cache=full, update='utilityIcon')
     return data
 
 _utility_structure_base = make_dict_structure_fn(Utility, cattrs.global_converter,

@@ -62,8 +62,6 @@ def disconnect():
 def send_repo(repo: str | Repository | None, force=False, force2=False):
     if isinstance(repo, Repository):
         qsend('repo', cattrs.unstructure(repo))
-        if repo.icon and caching.cacher.update_required(repo.icon):
-            qsend('repoIcon', str(caching.cacher.cache(repo.icon, return_path=True)))
     elif isinstance(repo, str):
         Thread(target=lambda: send_repo(repos_manager.load_repo(repo, force, force2))).start()
 
@@ -104,11 +102,6 @@ def _send_utilities(hashed_url):
         if stop_event.is_set() or utilities_stop_event.is_set():
             break
         qsend(f'utility{hashed_url}', cattrs.unstructure(UtilityUnstructureInfo(utility, full=False)))
-    for utility in repo.utilities:
-        if stop_event.is_set() or utilities_stop_event.is_set():
-            break
-        if utility.icon and caching.cacher.update_required(utility.icon):
-            qsend(f'utilityIcon{hashed_url}', utility.hash, str(caching.cacher.cache(utility.icon, return_path=True)))
     for utility in repo.utilities:
         if stop_event.is_set() or utilities_stop_event.is_set():
             break

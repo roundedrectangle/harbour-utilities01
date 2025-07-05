@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 import shutil
 from datetime import timedelta
+from threading import Thread
 
 from pyotherside_utils import *
 
@@ -90,7 +91,9 @@ class Cacher(CacherBase):
             shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?
         return find_extracted_contents(unpacked)
     
-    def easy(self, url: str, force_cache=False):
+    def easy(self, url: str, force_cache=False, update=''):
         if url and (force_cache or not self.update_required(url)):
             return str(self.cache(url, return_path=True))
-        return url # recache later
+        if url and update:
+            Thread(target=lambda: qsend(update, str(self.cache(url, return_path=True))))
+        return url # recache in thread
