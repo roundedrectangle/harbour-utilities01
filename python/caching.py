@@ -64,7 +64,9 @@ class Cacher(CacherBase):
                     self._on_download(url, extension)
                     if not return_path:
                         return data
-            except: pass
+            except:
+                if return_data:
+                    return None
         if return_path:
             return path
         if return_data:

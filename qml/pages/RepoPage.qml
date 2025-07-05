@@ -28,6 +28,11 @@ Page {
                 var i = findIndexByUrlHash(hash)
                 if (i !== -1) set(i, newData)
             })
+            py.setHandler('utilityIcon'+repo.hash, function(hash, icon) {
+                var i = findIndexByUrlHash(hash)
+                console.log(JSON.stringify(icon))
+                if (i !== -1) setProperty(i, 'icon', icon)
+            })
 
             py.call2('send_utilities', repo.hash)
         }

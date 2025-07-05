@@ -5,7 +5,7 @@ import QtGraphicalEffects 1.0
 HighlightImage {
     id: image
     property bool rounded
-    visible: !!source
+    visible: !!source && source != ''
 
     sourceSize {
         width: width

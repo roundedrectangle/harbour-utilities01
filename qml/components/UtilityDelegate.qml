@@ -7,21 +7,31 @@ ListItem {
     property var utility
 
     width: parent.width
-    contentHeight: delegateColumn.height
+    contentHeight: row.height
     enabled: utility.loaded
 
     Row {
-        id: delegateColumn
+        id: row
         x: Theme.horizontalPageMargin
         width: parent.width-2*x
-        height: Theme.itemSizeSmall
+        height: roundedImage.visible ? Theme.itemSizeMedium : Theme.itemSizeSmall
+        spacing: Theme.paddingMedium
 
-        //Image {}
+        Behavior on height { NumberAnimation { duration: 200 } }
+
+        RoundedImage {
+            id: roundedImage
+            anchors.verticalCenter: parent.verticalCenter
+            source: utility.icon
+            rounded: utility.rounded_icon
+            width: visible ? Theme.iconSizeMedium : 0
+            height: width
+        }
 
         Label {
             id: label
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - busyIndicator.width - (parent.visibleChildren.length - 1)*parent.spacing
+            width: parent.width - busyIndicator.width - roundedImage.width - (parent.visibleChildren.length - 1)*parent.spacing
             truncationMode: TruncationMode.Fade
             text: utility.name
             Behavior on width { NumberAnimation { duration: 200 } }

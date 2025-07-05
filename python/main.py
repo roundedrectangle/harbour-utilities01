@@ -105,8 +105,13 @@ def _send_utilities(hashed_url):
     for utility in repo.utilities:
         if stop_event.is_set() or utilities_stop_event.is_set():
             break
+        if utility.icon and caching.cacher.update_required(utility.icon):
+            qsend(f'utilityIcon{hashed_url}', utility.hash, str(caching.cacher.cache(utility.icon, return_path=True)))
+    for utility in repo.utilities:
+        if stop_event.is_set() or utilities_stop_event.is_set():
+            break
         res = cattrs.unstructure(utility)
-        qsend(f'utilityUpdate{hashed_url}', res['hash'], res)
+        qsend(f'utilityUpdate{hashed_url}', utility.hash, res)
     qsend(f"finished{hashed_url}")
     utilities_stop_event.clear()
 send_utilities = lambda url: Thread(target=_send_utilities, args=(url,)).start()

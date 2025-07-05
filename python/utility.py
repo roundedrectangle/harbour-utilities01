@@ -54,6 +54,8 @@ class Utility:
     name: str
     data_type: DataType
     data: str
+    icon: str = ''
+    rounded_icon: bool = False
     about_page_type: DataType = DataType.QML_LINK
     about_page: Optional[str] = None
 
@@ -128,7 +130,18 @@ def _utility_unstructure(utility: Utility | UtilityUnstructureInfo) -> dict[str,
         utility = utility.utility
     else:
         full = True
-    data = {'name': utility.name, 'hash': utility.hash, 'loaded': full}
+    data = {
+        'name': utility.name,
+        'hash': utility.hash,
+        'icon': '-',
+        'rounded_icon': utility.rounded_icon,
+
+        'loaded': full,
+    }
+    if utility.icon and (full or not caching.cacher.update_required(utility.icon)):
+        data['icon'] = str(caching.cacher.cache(utility.icon, return_path=True))
+    else:
+        data['icon'] = utility.icon
     data.update(utility.qml_data if full else STUB_FULL_QML_DATA)
     return data
 
