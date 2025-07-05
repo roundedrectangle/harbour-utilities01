@@ -123,13 +123,16 @@ allowedOrientations:defaultAllowedOrientations
 class UtilityUnstructureInfo:
     utility: Utility
     full: bool = True
+    update_hash: str = ''
 
 def _utility_unstructure(utility: Utility | UtilityUnstructureInfo) -> dict[str, Any]:
     if isinstance(utility, UtilityUnstructureInfo):
         full = utility.full
+        update_hash = utility.update_hash
         utility = utility.utility
     else:
         full = True
+        update_hash = ''
     data = {
         'name': utility.name,
         'hash': utility.hash,
@@ -138,7 +141,7 @@ def _utility_unstructure(utility: Utility | UtilityUnstructureInfo) -> dict[str,
         'loaded': full,
     }
     data.update(utility.qml_data if full else STUB_FULL_QML_DATA)
-    data['icon'] = caching.cacher.easy(utility.icon, force_cache=full, update='utilityIcon')
+    data['icon'] = caching.cacher.easy(utility.icon, force_cache=full, update=f'utilityIcon{update_hash}')
     return data
 
 _utility_structure_base = make_dict_structure_fn(Utility, cattrs.global_converter,

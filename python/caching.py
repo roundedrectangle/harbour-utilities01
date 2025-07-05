@@ -101,7 +101,7 @@ class Cacher(CacherBase):
             return
         self.caching.add(hashed)
         qsend(update, str(self.cache(url, return_path=True)))
-        self.caching.remove(url)
+        self.caching.remove(hashed)
     
     def easy(self, url: str, force_cache=False, update=''):
         if url and (force_cache or not self.update_required(url)):
