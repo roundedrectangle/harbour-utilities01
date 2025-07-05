@@ -26,6 +26,8 @@ cacher: Cacher = None # pyright:ignore[reportAssignmentType]
 
 class Cacher(CacherBase):
     """Caches single files and unpacked archives."""
+    caching: set[str]
+
     def __init__(
         self,
         cache: Path | str,
@@ -38,6 +40,8 @@ class Cacher(CacherBase):
         self.path = Path(cache)
         self.files_path = self.path / 'files'
         self.unpacked_path = self.path / 'unpacked'
+
+        self.caching = set()
 
         self._on_download = lambda url, saved: None
 
@@ -91,9 +95,17 @@ class Cacher(CacherBase):
             shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?
         return find_extracted_contents(unpacked)
     
+    def _cache_bg(self, url: str, update: str):
+        hashed = sha256(url)
+        if hashed in self.caching:
+            return
+        self.caching.add(hashed)
+        qsend(update, str(self.cache(url, return_path=True)))
+        self.caching.remove(url)
+    
     def easy(self, url: str, force_cache=False, update=''):
         if url and (force_cache or not self.update_required(url)):
             return str(self.cache(url, return_path=True))
         if url and update:
-            Thread(target=lambda: qsend(update, str(self.cache(url, return_path=True))))
+            Thread(target=self._cache_bg, args=(url, update)).start()
         return url # recache in thread
