@@ -315,17 +315,17 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="62"/>
+        <location filename="../qml/pages/RepoPage.qml" line="63"/>
         <source>Remove</source>
         <translation>Rimuovi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="65"/>
+        <location filename="../qml/pages/RepoPage.qml" line="66"/>
         <source>Removed repository</source>
         <translation type="unfinished">Repository rimossi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="83"/>
+        <location filename="../qml/pages/RepoPage.qml" line="84"/>
         <source>Could not load utilities</source>
         <translation>Non posso caricare le utilità</translation>
     </message>

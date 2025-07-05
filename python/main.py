@@ -101,7 +101,7 @@ def _send_utilities(hashed_url):
     for utility in repo.utilities:
         if stop_event.is_set() or utilities_stop_event.is_set():
             break
-        qsend(f'utility{hashed_url}', cattrs.unstructure(UtilityUnstructureInfo(utility, full=False)))
+        qsend(f'utility{hashed_url}', cattrs.unstructure(UtilityUnstructureInfo(utility, full=False, update_hash=hashed_url)))
     for utility in repo.utilities:
         if stop_event.is_set() or utilities_stop_event.is_set():
             break
