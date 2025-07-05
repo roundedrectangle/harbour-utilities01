@@ -14,7 +14,7 @@ ListItem {
         id: row
         x: Theme.horizontalPageMargin
         width: parent.width-2*x
-        height: roundedImage.visible ? Theme.itemSizeMedium : Theme.itemSizeSmall
+        height: Theme.itemSizeMedium
         spacing: Theme.paddingMedium
 
         Behavior on height { NumberAnimation { duration: 200 } }
@@ -22,6 +22,7 @@ ListItem {
         RoundedImage {
             id: roundedImage
             anchors.verticalCenter: parent.verticalCenter
+            visible: true
             source: utility.icon
             rounded: utility.rounded_icon
             width: visible ? Theme.iconSizeMedium : 0
@@ -40,6 +41,8 @@ ListItem {
 
         BusyIndicator {
             id: busyIndicator
+            width: running ? implicitWidth : 0
+            visible: opacity > 0
             anchors.verticalCenter: parent.verticalCenter
             running: !utility.loaded
             size: BusyIndicatorSize.Small

@@ -313,17 +313,17 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="63"/>
+        <location filename="../qml/pages/RepoPage.qml" line="62"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="66"/>
+        <location filename="../qml/pages/RepoPage.qml" line="65"/>
         <source>Removed repository</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="84"/>
+        <location filename="../qml/pages/RepoPage.qml" line="83"/>
         <source>Could not load utilities</source>
         <translation type="unfinished"></translation>
     </message>
@@ -418,12 +418,12 @@
 <context>
     <name>UtilityDelegate</name>
     <message>
-        <location filename="../qml/components/UtilityDelegate.qml" line="56"/>
+        <location filename="../qml/components/UtilityDelegate.qml" line="59"/>
         <source>About</source>
         <translation type="unfinished">О программе</translation>
     </message>
     <message>
-        <location filename="../qml/components/UtilityDelegate.qml" line="62"/>
+        <location filename="../qml/components/UtilityDelegate.qml" line="65"/>
         <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>
