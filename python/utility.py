@@ -133,15 +133,11 @@ def _utility_unstructure(utility: Utility | UtilityUnstructureInfo) -> dict[str,
     data = {
         'name': utility.name,
         'hash': utility.hash,
-        'icon': '-',
         'rounded_icon': utility.rounded_icon,
 
         'loaded': full,
     }
-    if utility.icon and (full or not caching.cacher.update_required(utility.icon)):
-        data['icon'] = str(caching.cacher.cache(utility.icon, return_path=True))
-    else:
-        data['icon'] = utility.icon
+    data['icon'] = caching.cacher.easy(utility.icon, force_cache=full)
     data.update(utility.qml_data if full else STUB_FULL_QML_DATA)
     return data
 

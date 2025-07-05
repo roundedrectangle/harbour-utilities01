@@ -89,3 +89,8 @@ class Cacher(CacherBase):
             unpacked.mkdir(parents=True, exist_ok=True)
             shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?
         return find_extracted_contents(unpacked)
+    
+    def easy(self, url: str, force_cache=False):
+        if url and (force_cache or not self.update_required(url)):
+            return str(self.cache(url, return_path=True))
+        return url # recache later

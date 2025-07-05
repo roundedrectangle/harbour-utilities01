@@ -62,6 +62,8 @@ def disconnect():
 def send_repo(repo: str | Repository | None, force=False, force2=False):
     if isinstance(repo, Repository):
         qsend('repo', cattrs.unstructure(repo))
+        if repo.icon and caching.cacher.update_required(repo.icon):
+            qsend('repoIcon', str(caching.cacher.cache(repo.icon, return_path=True)))
     elif isinstance(repo, str):
         Thread(target=lambda: send_repo(repos_manager.load_repo(repo, force, force2))).start()
 
