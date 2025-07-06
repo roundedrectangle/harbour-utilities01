@@ -95,17 +95,17 @@ class Cacher(CacherBase):
             shutil.unpack_archive(archive, unpacked) # FIXME: should we use try/except here?
         return find_extracted_contents(unpacked)
     
-    def _cache_bg(self, url: str, update: str, extra=[]):
+    def _cache_bg(self, url: str, *update):
         hashed = sha256(url)
         if hashed in self.caching:
             return
         self.caching.add(hashed)
-        qsend(update, *extra, str(self.cache(url, return_path=True)))
+        qsend(*update, str(self.cache(url, return_path=True)))
         self.caching.remove(hashed)
     
-    def easy(self, url: str, force_cache=False, update='', extra_update=[]):
+    def easy(self, url: str, *update, force_cache=False):
         if url and (force_cache or not self.update_required(url)):
             return str(self.cache(url, return_path=True))
         if url and update:
-            Thread(target=self._cache_bg, args=(url, update, (extra_update,) if extra_update else ())).start()
+            Thread(target=self._cache_bg, args=(url, *update)).start()
         return url # recache in thread

@@ -162,9 +162,9 @@ ApplicationWindow {
                 if (i !== -1) set(i, repo)
                 else append(repo)
             })
-            py.setHandler('repoIcon', function(hash, icon) {
+            py.setHandler('repoPropertyUpdate', function(hash, name, value) {
                 var i = findIndexByUrlHash(hash)
-                if (i !== -1) setProperty(i, 'icon', icon)
+                if (i !== -1) setProperty(i, name, value)
             })
             py.call2('request_repos')
         }
