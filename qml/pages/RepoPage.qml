@@ -72,10 +72,7 @@ Page {
     }
     Component {
         id: headerComponent
-        RepoHeader {
-            repo: repoPage.repo
-            anchors.bottomMargin: Theme.paddingLarge*15
-        }
+        RepoHeader { repo: repoPage.repo }
     }
     Component {
         id: viewPlaceholderComponent
@@ -131,10 +128,10 @@ Page {
             Loader { sourceComponent: pulleyMenuComponent }
             header: headerComponent
             Binding {
-                when: !!target
+                // todo
                 target: headerItem
                 property: 'anchors.bottomMargin'
-                value: Theme.paddingLarge*15
+                value: Theme.paddingLarge
             }
 
             Loader {
