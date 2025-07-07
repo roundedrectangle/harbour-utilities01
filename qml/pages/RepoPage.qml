@@ -91,7 +91,7 @@ Page {
     Loader {
         id: loader
         anchors.fill: parent
-        sourceComponent: false ? listViewComponent : gridViewComponent
+        sourceComponent: repo.grid ? gridViewComponent : listViewComponent
     }
 
     Component {

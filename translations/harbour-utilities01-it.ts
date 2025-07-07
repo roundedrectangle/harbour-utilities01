@@ -315,17 +315,17 @@
 <context>
     <name>RepoPage</name>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="59"/>
+        <location filename="../qml/pages/RepoPage.qml" line="63"/>
         <source>Remove</source>
         <translation>Rimuovi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="62"/>
+        <location filename="../qml/pages/RepoPage.qml" line="66"/>
         <source>Removed repository</source>
         <translation type="unfinished">Repository rimossi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RepoPage.qml" line="78"/>
+        <location filename="../qml/pages/RepoPage.qml" line="82"/>
         <source>Could not load utilities</source>
         <translation>Non posso caricare le utilità</translation>
     </message>
@@ -433,12 +433,12 @@
 <context>
     <name>UtilityGridDelegate</name>
     <message>
-        <location filename="../qml/components/UtilityGridDelegate.qml" line="52"/>
+        <location filename="../qml/components/UtilityGridDelegate.qml" line="65"/>
         <source>About</source>
         <translation type="unfinished">Info</translation>
     </message>
     <message>
-        <location filename="../qml/components/UtilityGridDelegate.qml" line="58"/>
+        <location filename="../qml/components/UtilityGridDelegate.qml" line="71"/>
         <source>Launch detached</source>
         <translation type="unfinished"></translation>
     </message>

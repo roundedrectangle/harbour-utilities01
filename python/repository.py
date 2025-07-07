@@ -23,6 +23,7 @@ class Repository:
     icon: str = ''
     rounded_icon: bool = False
     description: str = ''
+    grid: bool = False
 
     # internal
     url: Optional[str] = None
