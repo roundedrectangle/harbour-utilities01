@@ -1,51 +1,57 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-ListItem {
+GridItem {
+    id: gridItem
     property Page page
     property var repo
     property var utility
 
-    width: parent.width
-    contentHeight: row.height
     enabled: utility.loaded
 
-    Row {
-        id: row
-        x: Theme.horizontalPageMargin
-        width: parent.width-2*x
-        height: Theme.itemSizeMedium
+    contentHeight: column.height
+    _backgroundColor: 'transparent' // press effect is provided by content
+
+    Column {
+        id: column
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottomMargin: Theme.paddingLarge
+        }
+        width: Theme.iconSizeLauncher
         spacing: Theme.paddingMedium
 
         Behavior on height { NumberAnimation { duration: 200 } }
 
         RoundedImage {
             id: roundedImage
-            anchors.verticalCenter: parent.verticalCenter
             visible: true
             source: utility.icon
             rounded: utility.rounded_icon
-            width: Theme.iconSizeMedium
+            width: parent.width
             height: width
+            highlighted: gridItem.highlighted
+
+            BusyIndicator {
+                id: busyIndicator
+                anchors.centerIn: parent
+                running: !utility.loaded
+                size: BusyIndicatorSize.Small
+            }
         }
 
         Label {
             id: label
-            anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - busyIndicator.width - roundedImage.width - (parent.visibleChildren.length - 1)*parent.spacing
+            x: Theme.paddingSmall / 2
+            width: parent.width - 2*x
             truncationMode: TruncationMode.Fade
+            font.pixelSize: Theme.fontSizeExtraSmall
+            fontSizeMode: Text.Fit
+            minimumPixelSize: Theme.fontSizeTiny
             text: utility.name
-            Behavior on width { NumberAnimation { duration: 200 } }
+            highlighted: gridItem.highlighted
             opacity: loaded ? 1 : Theme.opacityFaint
-        }
-
-        BusyIndicator {
-            id: busyIndicator
-            width: running ? implicitWidth : 0
-            visible: opacity > 0
-            anchors.verticalCenter: parent.verticalCenter
-            running: !utility.loaded
-            size: BusyIndicatorSize.Small
+            Behavior on opacity { FadeAnimator {} }
         }
     }
 

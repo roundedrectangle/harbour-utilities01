@@ -343,6 +343,17 @@
     </message>
 </context>
 <context>
+    <name>UtilityGridDelegate</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <source>Launch detached</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Utilities!</source>

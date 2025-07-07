@@ -1,9 +1,9 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import Sailfish.Silica 1.0
 import "../components"
 
 Page {
-    id: page
+    id: repoPage
     allowedOrientations: defaultAllowedOrientations
     property bool __utilities_page
 
@@ -16,13 +16,17 @@ Page {
         id: pageStack
         depth: window.pageStack.depth = pageDepth
     }
-    property alias pageStack: pageStack
+    property alias repoPage: repoPage
+    property var pulleyMenu: loader.item ? loader.item.pullDownMenu : null
 
     ListModel {
         id: utilitiesModel
         Component.onCompleted: {
-            py.setHandler('error'+repo.hash, function() { errorOccurred = true; pulleyMenu.busy = false })
-            py.setHandler('finished'+repo.hash, function() { pulleyMenu.busy = false })
+            py.setHandler('error'+repo.hash, function() {
+                errorOccurred = true
+                if (pulleyMenu) pulleyMenu.busy = false
+            })
+            py.setHandler('finished'+repo.hash, function() { if (pulleyMenu) pulleyMenu.busy = false })
             py.setHandler('utility'+repo.hash, append)
             py.setHandler('utilityUpdate'+repo.hash, function(hash, newData) {
                 var i = findIndexByUrlHash(hash)
@@ -50,11 +54,8 @@ Page {
         }
     }
 
-    SilicaListView {
-        id: listView
-        anchors.fill: parent
-        model: utilitiesModel
-
+    Component {
+        id: pulleyMenuComponent
         PullDownMenu {
             id: pulleyMenu
             busy: true
@@ -68,25 +69,94 @@ Page {
                 }
             }
         }
-
-        header: RepoHeader { repo: page.repo }
-
-        BusyIndicator {
-            size: BusyIndicatorSize.Large
-            anchors.centerIn: parent
-            running: utilitiesModel.count == 0 && !errorOccurred
+    }
+    Component {
+        id: headerComponent
+        RepoHeader {
+            repo: repoPage.repo
+            anchors.bottomMargin: Theme.paddingLarge*15
         }
-
+    }
+    Component {
+        id: viewPlaceholderComponent
         ViewPlaceholder {
             anchors.fill: parent
             enabled: errorOccurred && utilitiesModel.count == 0
             text: qsTr("Could not load utilities")
         }
+    }
 
-        property alias repo: page.repo
-        delegate: UtilityDelegate {
-            repo: listView.repo
-            utility: model
+    PageBusyIndicator {
+        running: utilitiesModel.count == 0 && !errorOccurred
+    }
+
+
+    Loader {
+        id: loader
+        anchors.fill: parent
+        sourceComponent: false ? listViewComponent : gridViewComponent
+    }
+
+    Component {
+        id: listViewComponent
+        SilicaListView {
+            id: listView
+            anchors.fill: parent
+            model: utilitiesModel
+
+            Loader { sourceComponent: pulleyMenuComponent }
+            header: headerComponent
+
+            Loader {
+                sourceComponent: viewPlaceholderComponent
+                active: errorOccurred && utilitiesModel.count == 0
+            }
+
+            property var repo: repoPage.repo
+            delegate: UtilityDelegate {
+                page: repoPage
+                repo: listView.repo
+                utility: model
+            }
+        }
+    }
+
+    Component {
+        id: gridViewComponent
+        SilicaGridView {
+            id: gridView
+            height: parent.height
+            model: utilitiesModel
+
+            Loader { sourceComponent: pulleyMenuComponent }
+            header: headerComponent
+            Binding {
+                when: !!target
+                target: headerItem
+                property: 'anchors.bottomMargin'
+                value: Theme.paddingLarge*15
+            }
+
+            Loader {
+                sourceComponent: viewPlaceholderComponent
+                active: errorOccurred && utilitiesModel.count == 0
+            }
+
+            FontMetrics {
+                id: fontMetrics
+                font.pixelSize: Theme.fontSizeExtraSmall
+            }
+
+            property int columns: 4 // TODO
+            cellWidth: width / columns
+            cellHeight: Theme.iconSizeLarge + Theme.paddingMedium +  fontMetrics.height + Theme.paddingLarge
+
+            property var repo: repoPage.repo
+            delegate: UtilityGridDelegate {
+                page: repoPage
+                repo: gridView.repo
+                utility: model
+            }
         }
     }
 }

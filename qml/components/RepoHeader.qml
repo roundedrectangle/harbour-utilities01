@@ -4,12 +4,13 @@ import QtGraphicalEffects 1.0
 
 Item {
     width: parent.width
-    height: bannerLoader.active ? width / 2 : header.height
+    implicitHeight: bannerLoader.active ? width / 2 : header.height
     property var repo
 
     Loader {
         id: bannerLoader
-        anchors.fill: parent
+        width: parent.width
+        height: width / 2
         active: !!repo.banner
         sourceComponent: Component {
             Image {
